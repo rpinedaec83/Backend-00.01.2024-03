@@ -1,0 +1,135 @@
+/* Color Fondo Pagina*/
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #d3f5c8, #d2eeee);
+    padding-left: 25px;
+}
+
+
+/* Animación para el título de bienvenida */
+.Hackaton01 {
+    animation: fadeInUp 1.5s ease;
+    text-align: center;
+}
+/* Definición de la animación */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos PaginaReto1*/
+/* Estilo adicional para los títulos del Reto 1 y 2 con clase .TituloR1 y .TituloR2*/
+.TituloR1, .TituloR2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+    color: #333;
+    text-align: center;   
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1s ease forwards;
+}
+.Titulo {
+    color: rgb(61, 73, 110);
+    padding-top: 15px;
+    text-align: center;
+}
+#contenidoReto.reto1-content p {
+    font-size: 1.2em; /* Tamaño de fuente para los párrafos */
+    line-height: 1.5; /* Altura de línea */
+    color: #333; /* Color del texto */
+    max-width: 850px; /* Ancho máximo del párrafo */
+    
+}
+.question-container1 {
+    margin-bottom: 20px;
+    border: 5px solid #a0ee47;
+    padding: 10px;
+    border-radius: 37px;
+}
+.grid-container1{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+    gap: 20px; /* Espacio entre columnas */  
+}
+button.Regresar1{
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    transition: background-color 0.3s ease;
+    color: #fff;
+    cursor: pointer;    
+    margin-left: 35%;
+    margin-top: 50px;    
+}
+button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;    
+    margin-top: 5px;
+    width: 210px;
+    margin-left: 35%;
+}
+button:hover {
+    background-color: #2980b9;    
+}
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+.button-container button {
+    animation: bounce 2s ease infinite;
+}
+.thanks-text {
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;    
+}
+.thanks-text a{
+    font-size: 25px; /* Tamaño de la fuente */    
+}
+.thanks-text p{
+    font-weight: bold; /* Negrita */    
+    font-family: Arial, sans-serif; /* Fuente */
+    animation: pulse 1.5s infinite; /* Animación de pulso */ 
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Reto 02*/
+.thanks-text2 {
+    width: 100%;
+    text-align: center;
+    margin-top: 230px;    
+}
+.thanks-text2 a{
+    font-size: 25px; /* Tamaño de la fuente */    
+}
+.thanks-text2 p{
+    font-weight: bold; /* Negrita */    
+    font-family: Arial, sans-serif; /* Fuente */
+    animation: pulse 1.5s infinite; /* Animación de pulso */ 
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
