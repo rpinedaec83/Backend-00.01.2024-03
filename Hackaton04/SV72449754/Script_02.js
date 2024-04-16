@@ -2,8 +2,7 @@
 /*01) Utilizando función arrow, crear una función que reciba como parámetros un nombre, apellido y 
       edad y los retorne en un string concatenado “Hola mi nombre es sebastián yabiku y mi edad 33” */
        
-       let F_Arrow = (Nombre,Apellido,Edad) => {
-       return console.log(`hola mi nombre es ${Nombre} ${Apellido} y mi edad es ${Edad} `)};
+       let F_Arrow = (Nombre,Apellido,Edad) => { return console.log(`hola mi nombre es ${Nombre} ${Apellido} y mi edad es ${Edad} `)};
 
        //Test de la funcion
        console.log(F_Arrow("marco","poma",30));
@@ -20,7 +19,9 @@
         return sum
         }
         //Test de la Funcion
+        console.log("Ejercicio 05: ")
        console.log("La suma de los cubos de los Numeros es: " + Sum_Cubes(1,5,9));
+       console.log("***********************************");
 
 
 
@@ -30,7 +31,6 @@
        function Tipo_Dato(param) {
               let Data_Type = typeof param;
               
- 
               switch (Data_Type) {
                      case "number":
                             console.log("El dato ingresado es de tipo Numero")    
@@ -54,7 +54,9 @@
               
        }
        //Test de la Funcion
+       console.log("Ejercicio 06: ")
        Tipo_Dato("a");
+       console.log("***********************************");
 
 
        
@@ -65,6 +67,18 @@
 
 /*06)  Cree una función que tome una matriz de números y devuelva los números mínimos y máximos, en ese orden.
        minMax([1, 2, 3, 4, 5]) ➞ [1, 5] */
+       function MinMax(Arr) {
+              let T1=Math.min.apply(null,Arr);
+              let T2=Math.max.apply(null,Arr);
+              let Array_MinMax=[T1,T2];
+              return Array_MinMax
+       }
+       
+       //Test de la Funcion
+       console.log("Ejercicio 07: ")
+       console.log(MinMax([1,2,3,4,5]));
+       console.log("***********************************");
+
 
 /*07)  Escriba una función que tome una matriz de 10 enteros (entre 0 y 9) y devuelva una cadena en forma 
        de un número de teléfono.
@@ -73,6 +87,15 @@
 /*08)  Cree una función que tome una matriz de matrices con números. Devuelve una nueva matriz (única) con 
        el mayor número de cada uno.
        findLargestNums([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]) ➞ [7, 90, 2] */
+
+       function findLargestNums(arr) {
+              let arreglo=[];
+              arr.forEach(elem1 => {arreglo.push(Math.max.apply(null,elem1)) });
+              return arreglo
+       }
+       console.log("Ejercicio 08: ")
+       console.log(findLargestNums([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]));
+       console.log("***********************************");
 
 /*09)  Dada una palabra, escriba una función que devuelva el primer índice y el último índice de un carácter.
        charIndex("hello", "l") ➞ [2, 3]
@@ -116,6 +139,7 @@
                 if (n!=NaN && n>0) {
                     for (let i = 1; i <= n; i++) {
                         sum=sum+i**3; 
+                        //console.log(sum);
                     } 
                     
                 }
@@ -126,8 +150,8 @@
             }
 
             //Test de la Funcion
-            Num=10;
-            console.log("La suma de los "+ Num + " primeros numeros enteros positivos es: "+ squaresSum(Num));
+           // Num=10;
+            //console.log("La suma de los "+ Num + " primeros numeros enteros positivos es: "+ squaresSum(Num));
 
 
 
@@ -167,3 +191,9 @@
 
 /*22)  Cree una función que capitalice la última letra de cada palabra.
        capLast("hello") ➞ "hellO" */
+
+
+       const animales=[["Puma","Tigre","Pantera"],["Leon","Leopardo","Cobra"],["perro","gato","cerdo"]];
+      // animales.forEach((Elem,i,Arrax) => {console.log(Elem + " = "+ i+ " - "+ Arrax)});
+      animales.forEach((elem1,j) => { elem1.forEach((elem2,i)=>{console.log(elem2 +" -["+j+","+i+"]")})});
+      
