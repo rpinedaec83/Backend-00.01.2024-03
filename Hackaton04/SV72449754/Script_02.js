@@ -1,6 +1,14 @@
 
 /*01) Utilizando función arrow, crear una función que reciba como parámetros un nombre, apellido y 
       edad y los retorne en un string concatenado “Hola mi nombre es sebastián yabiku y mi edad 33” */
+       
+       let F_Arrow = (Nombre,Apellido,Edad) => {
+       return console.log(`hola mi nombre es ${Nombre} ${Apellido} y mi edad es ${Edad} `)};
+
+       //Test de la funcion
+       console.log(F_Arrow("marco","poma",30));
+
+
 
 
 /*02)  Cree una función que tome números y devuelva la suma de sus cubos.
@@ -12,10 +20,44 @@
         return sum
         }
         //Test de la Funcion
-        console.log("La suma de los cubos de los Numeros esx: " + Sum_Cubes(1,5,9));
+       console.log("La suma de los cubos de los Numeros es: " + Sum_Cubes(1,5,9));
+
+
+
 
 /*03)  Crear una funcion que me retorne el tipo de valor entregado, 
        invocar la función para los distintos tipos de js */
+       function Tipo_Dato(param) {
+              let Data_Type = typeof param;
+              
+ 
+              switch (Data_Type) {
+                     case "number":
+                            console.log("El dato ingresado es de tipo Numero")    
+                     break;
+
+                     case "string":
+                            console.log("El dato ingresado es de tipo String")    
+                     break;
+
+                     case "boolean":
+                            console.log("El dato ingresado es de tipo Booleano")    
+                     break;
+
+                     case "undefined":
+                            console.log("El dato ingresado es de tipo Indefinido")    
+                     break;
+              
+                     default:
+                            break;
+              }
+              
+       }
+       //Test de la Funcion
+       Tipo_Dato("a");
+
+
+       
 
 /*04)  Crear una función que reciba n cantidad de argumentos y los sume ( utilizar parametros rest) */
 
