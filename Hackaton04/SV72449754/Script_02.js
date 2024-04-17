@@ -5,7 +5,9 @@
        let F_Arrow = (Nombre,Apellido,Edad) => { return console.log(`hola mi nombre es ${Nombre} ${Apellido} y mi edad es ${Edad} `)};
 
        //Test de la funcion
-       console.log(F_Arrow("marco","poma",30));
+       console.log("Ejercicio 01: ");
+       console.log(F_Arrow("marco","poma",32));
+       console.log("************************************************************");
 
 
 
@@ -14,14 +16,14 @@
        sumOfCubes(1, 5, 9) ➞ 855
        Since 1^3 + 5^3 + 9^3 = 1 + 125 + 729 = 855 */
        function Sum_Cubes(Num1,Num2,Num3) {
-        let sum=0;
-        sum = Num1**3+ Num2**3 + Num3**3;
-        return sum
-        }
+              let sum=0;
+              sum = Num1**3+ Num2**3 + Num3**3;
+              return sum
+       }
         //Test de la Funcion
-        console.log("Ejercicio 05: ")
+       console.log("Ejercicio 02: ");
        console.log("La suma de los cubos de los Numeros es: " + Sum_Cubes(1,5,9));
-       console.log("***********************************");
+       console.log("************************************************************");
 
 
 
@@ -53,10 +55,11 @@
               }
               
        }
+
        //Test de la Funcion
-       console.log("Ejercicio 06: ")
+       console.log("Ejercicio 03: ")
        Tipo_Dato("a");
-       console.log("***********************************");
+       console.log("************************************************************");
 
 
        
@@ -75,9 +78,9 @@
        }
        
        //Test de la Funcion
-       console.log("Ejercicio 07: ")
+       console.log("Ejercicio 06: ")
        console.log(MinMax([1,2,3,4,5]));
-       console.log("***********************************");
+       console.log("************************************************************");
 
 
 /*07)  Escriba una función que tome una matriz de 10 enteros (entre 0 y 9) y devuelva una cadena en forma 
@@ -93,9 +96,9 @@
               arr.forEach(elem1 => {arreglo.push(Math.max.apply(null,elem1)) });
               return arreglo
        }
-       console.log("Ejercicio 08: ")
+       console.log("Ejercicio 08: ");
        console.log(findLargestNums([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]));
-       console.log("***********************************");
+       console.log("************************************************************");
 
 /*09)  Dada una palabra, escriba una función que devuelva el primer índice y el último índice de un carácter.
        charIndex("hello", "l") ➞ [2, 3]
@@ -112,6 +115,13 @@
             { name: "Steve",  age: 32, budget: 40000 },
             { name: "Martin",  age: 16, budget: 2700 }
             ]) ➞ 65700 */
+
+
+             
+
+       function getBudgets(params) {
+              
+       }
 
 /*12)  Cree una función que tome una matriz de estudiantes y devuelva una matriz de nombres de estudiantes.
        getStudentNames([
@@ -150,8 +160,10 @@
             }
 
             //Test de la Funcion
-           // Num=10;
-            //console.log("La suma de los "+ Num + " primeros numeros enteros positivos es: "+ squaresSum(Num));
+            Num=10;
+            console.log("Ejercicio 14: ");
+            console.log("La suma de los "+ Num + " primeros numeros enteros positivos es: "+ squaresSum(Num));
+            console.log("************************************************************");
 
 
 
@@ -196,4 +208,26 @@
        const animales=[["Puma","Tigre","Pantera"],["Leon","Leopardo","Cobra"],["perro","gato","cerdo"]];
       // animales.forEach((Elem,i,Arrax) => {console.log(Elem + " = "+ i+ " - "+ Arrax)});
       animales.forEach((elem1,j) => { elem1.forEach((elem2,i)=>{console.log(elem2 +" -["+j+","+i+"]")})});
+
+
+
+      console.log("************************************************************");
+      /*let objper =[
+       { name: "John", age: 21, budget: 23000 },
+       { name: "Steve",  age: 32, budget: 40000 },
+       { name: "Martin",  age: 16, budget: 2700 }]*/
+       //let objper =[ {name: "John", age: 21, budget: 23000} ];
+       let objper=[24,21,36,74,8,45];
+              
+      // objper.forEach(element1=> {element1.forEach(element2=>{console.log(element2)})});
+      //let nn2=objper.forEach((elem,i,Arr)=>{ return elem*2});
+      //let nn2=objper.forEach(MyFunction);
+       let nn2=objper.map(elem=>{return elem*2});
+
+      /*function MyFunction(val,index,Array){
+       return val*2*/
+      
+      console.log("************************************************************");
+      console.log(nn2);
+      
       
