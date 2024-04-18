@@ -2,11 +2,11 @@
 /*01) Utilizando función arrow, crear una función que reciba como parámetros un nombre, apellido y 
       edad y los retorne en un string concatenado “Hola mi nombre es sebastián yabiku y mi edad 33” */
        
-       let F_Arrow = (Nombre,Apellido,Edad) => { return console.log(`hola mi nombre es ${Nombre} ${Apellido} y mi edad es ${Edad} `)};
+       let func_Arrow = (Nombre,Apellido,Edad) => { return console.log(`hola mi nombre es ${Nombre} ${Apellido} y mi edad es ${Edad} `)};
 
        //Test de la funcion
        console.log("Ejercicio 01: ");
-       console.log(F_Arrow("marco","poma",32));
+       console.log(func_Arrow("marco","poma",32));
        console.log("************************************************************");
 
 
@@ -20,6 +20,7 @@
               sum = Num1**3+ Num2**3 + Num3**3;
               return sum
        }
+
         //Test de la Funcion
        console.log("Ejercicio 02: ");
        console.log("La suma de los cubos de los Numeros es: " + Sum_Cubes(1,5,9));
@@ -65,8 +66,38 @@
        
 
 /*04)  Crear una función que reciba n cantidad de argumentos y los sume ( utilizar parametros rest) */
+       function Sum_All(...Arr) {
+              let sum=0;
+              for(let arg of Arr){
+                     sum+=arg
+              }
+              return sum
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 04: ")
+       console.log(Sum_All(1,2,3,5,6));
+       console.log("************************************************************");
+
+
+
 
 /*05)  Crear una función que reciba un array de valores y filtre los valores que no son string */
+
+       function filterList_Str(Arr) {
+              let Arreglo=[];
+              Arr.forEach(elem=>{if((typeof elem)=="string"){Arreglo.push(elem)}})
+              return Arreglo
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 05: ");
+       console.log(filterList_Str([1, 2, 3, "x", "y", 10]));
+       console.log("************************************************************");
+
+
+
+
 
 /*06)  Cree una función que tome una matriz de números y devuelva los números mínimos y máximos, en ese orden.
        minMax([1, 2, 3, 4, 5]) ➞ [1, 5] */
@@ -83,9 +114,35 @@
        console.log("************************************************************");
 
 
+
+
 /*07)  Escriba una función que tome una matriz de 10 enteros (entre 0 y 9) y devuelva una cadena en forma 
        de un número de teléfono.
        formatPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ➞ "(123) 456-7890" */
+
+       function formatPhoneNumber(Arr) {
+              let Arr_StrAux=Arr.toString();
+              let Arr_Str="",Arr_Str00="",Arr_Str01="",Arr_Str02="",Arr_Str03="";
+
+              for (let i = 0; i < Arr_StrAux.length; i++) {
+                     if( Arr_StrAux[i]!=","){
+                            Arr_Str00=  Arr_Str00+Arr_StrAux[i];
+                     }
+              }
+              Arr_Str01=Arr_Str00.substring(0,3);
+              Arr_Str02=Arr_Str00.substring(3,6);
+              Arr_Str03=Arr_Str00.substring(6,10);
+              Arr_Str="(".concat(Arr_Str01,") ",Arr_Str02,"-",Arr_Str03);
+
+              return Arr_Str
+              
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 07: ")
+       console.log(formatPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+       console.log("************************************************************");
+
 
 /*08)  Cree una función que tome una matriz de matrices con números. Devuelve una nueva matriz (única) con 
        el mayor número de cada uno.
@@ -96,9 +153,14 @@
               arr.forEach(elem1 => {arreglo.push(Math.max.apply(null,elem1)) });
               return arreglo
        }
+
+       //Test de la Funcion
        console.log("Ejercicio 08: ");
        console.log(findLargestNums([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]));
        console.log("************************************************************");
+
+
+
 
 /*09)  Dada una palabra, escriba una función que devuelva el primer índice y el último índice de un carácter.
        charIndex("hello", "l") ➞ [2, 3]
@@ -110,18 +172,34 @@
        toArray({ a: 1, b: 2 }) ➞ [["a", 1], ["b", 2]] */
 
 /*11)  Cree la función que toma una matriz con objetos y devuelve la suma de los presupuestos de las personas.
-       getBudgets([
+       AgetBudgets([
             { name: "John", age: 21, budget: 23000 },
             { name: "Steve",  age: 32, budget: 40000 },
             { name: "Martin",  age: 16, budget: 2700 }
             ]) ➞ 65700 */
 
-
-             
-
-       function getBudgets(params) {
-              
+       function getBudgets(Arr) {
+              let Sum=0
+              let Arreglo=Arr.map(elem=>{return elem.budget});
+       
+              Sum=Arreglo.reduce((Acc,Val_Current)=>{return Acc+Val_Current});
+              return Sum
        }
+
+       //Test de la Funcion
+       Array_Test=([
+              { name: "John", age: 21, budget: 23000 },
+              { name: "Steve",  age: 32, budget: 40000 },
+              { name: "Martin",  age: 16, budget: 2700 }
+              ])
+
+       console.log("Ejercicio 11: ");
+       console.log(getBudgets(Array_Test));
+       console.log("************************************************************");
+
+
+
+
 
 /*12)  Cree una función que tome una matriz de estudiantes y devuelva una matriz de nombres de estudiantes.
        getStudentNames([
@@ -129,6 +207,20 @@
             { name: "Mike" },
             { name: "John" }
             ]) ➞ ["Becky", "John", "Steve"] */
+
+       function getStudentNames(Arr) {
+              let Arreglo=Arr.map(elem=>{return elem.name});
+              return Arreglo
+       }
+
+       //Test de la Funcion
+       Arr_Student=[{ name: "Steve" },{ name: "Mike" },{ name: "John" }]
+       console.log("Ejercicio 12: ");
+       console.log(getStudentNames(Arr_Student));
+       console.log("************************************************************");
+
+
+
 
 /*13)  Escriba una función que convierta un objeto en una matriz de claves y valores.
        objectToArray({
@@ -167,28 +259,100 @@
 
 
 
+
 /*15)  Cree una función para multiplicar todos los valores en una matriz por la cantidad de valores en la matriz dada
        multiplyByLength([2, 3, 1, 0]) ➞ [8, 12, 4, 0]   */
+
+       function multiplyByLength(Arr) {
+              let len=Arr.length;
+              let Arreglo=Arr.map(elem=>{return elem*len});
+              return Arreglo   
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 15: ");
+       console.log(multiplyByLength([2, 3, 1, 0]));
+       console.log("************************************************************");
+
+
 
 
 /*16)  Cree una función que tome un número como argumento y devuelva una matriz de números contando desde este 
        número a cero.
        countdown(5) ➞ [5, 4, 3, 2, 1, 0]  */
 
+       function countdown(n) {
+              let Arreglo=[];
+              if (n>0) {
+                     for (let i = 0; i <= n; i++) {
+                            Arreglo.push(n-i);          
+                     }      
+              }
+               return Arreglo          
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 16: ");
+       console.log(countdown(11));
+       console.log("************************************************************");
+
+
+
+
 /*17)  Cree una función que tome una matriz y devuelva la diferencia entre los números más grandes y más pequeños.
        diffMaxMin([10, 4, 1, 4, -10, -50, 32, 21]) ➞ 82
-       Smallest number is -50, biggest is 32.              */
+       Smallest number is -50, biggest is 32.*/
+
+       function diffMaxMin(Arr) {
+              let Val_min=Math.min.apply(null,Arr);
+              let Val_max=Math.max.apply(null,Arr);
+              return Val_max-Val_min          
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 17: ");
+       console.log(diffMaxMin([10, 4, 1, 4, -10, -50, 32, 21]));
+       console.log("************************************************************");
+
 
 
 
 /*18)  Cree una función que filtre las cadenas de una matriz y devuelva una nueva matriz que solo contenga enteros.
        filterList([1, 2, 3, "x", "y", 10]) ➞ [1, 2, 3, 10]  */
 
+       function filterList(Arr) {
+              let Arreglo=[];
+              Arr.forEach(elem=>{if((typeof elem)=="number"){Arreglo.push(elem)}})
+              return Arreglo
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 18: ");
+       console.log(filterList([1, 2, 3, "x", "y", 10]));
+       console.log("************************************************************");
+
+
+
 
 /*19)  Cree una función que tome dos argumentos (elemento, tiempos). El primer argumento (elemento) es el elemento que 
        necesita repetirse, mientras que el segundo argumento (veces) es la cantidad de veces que se debe repetir el elemento. 
        Devuelve el resultado en una matriz.
        repeat(13, 5) ➞ [13, 13, 13, 13, 13] */
+       function repeat(val,num) {
+              let Arreglo=[];
+              for (let i = 0; i < num; i++) {
+                     Arreglo.push(val)
+                     
+              }
+              return Arreglo
+       }
+
+        //Test de la Funcion
+        console.log("Ejercicio 19: ");
+        console.log(repeat(13, 5));
+        console.log("************************************************************");
+
+
 
 
 /*20)  Escriba una función, .vreplace () que extienda el prototipo de cadena reemplazando todas las vocales en una 
@@ -204,30 +368,32 @@
 /*22)  Cree una función que capitalice la última letra de cada palabra.
        capLast("hello") ➞ "hellO" */
 
-
-       const animales=[["Puma","Tigre","Pantera"],["Leon","Leopardo","Cobra"],["perro","gato","cerdo"]];
-      // animales.forEach((Elem,i,Arrax) => {console.log(Elem + " = "+ i+ " - "+ Arrax)});
-      animales.forEach((elem1,j) => { elem1.forEach((elem2,i)=>{console.log(elem2 +" -["+j+","+i+"]")})});
-
-
-
-      console.log("************************************************************");
-      /*let objper =[
-       { name: "John", age: 21, budget: 23000 },
-       { name: "Steve",  age: 32, budget: 40000 },
-       { name: "Martin",  age: 16, budget: 2700 }]*/
-       //let objper =[ {name: "John", age: 21, budget: 23000} ];
-       let objper=[24,21,36,74,8,45];
+       /*console.log("************************************************************");
+       let Arr_test=[13,2,5,7,8,9];
+       let Arr_Str=Arr_test.toString();
+       for (let arg of Arr_test) {
+              console.log(arg)
               
-      // objper.forEach(element1=> {element1.forEach(element2=>{console.log(element2)})});
-      //let nn2=objper.forEach((elem,i,Arr)=>{ return elem*2});
-      //let nn2=objper.forEach(MyFunction);
-       let nn2=objper.map(elem=>{return elem*2});
+       }
+       console.log("************************************************************");
+       console.log( Arr_Str)
+       console.log("************************************************************");
+       console.log(Arr_Str.length);
 
-      /*function MyFunction(val,index,Array){
-       return val*2*/
+       for (let i = 1; i < Arr_Str.length ;i=i+2) {
+              
+              console.log(Arr_Str[i]);
+       
+
+       let xxtoArray=[{ a: 1, b: 2 }];
+       let xxtoArray_Str=xxtoArray.toString();
+       console.log(xxtoArray[0].b);
+       console.log("************************************************************")
+       for (let index = 0; index < xxtoArray_Str.length; index++) {
+              console.log(xxtoArray_Str[index]);
+              
+       }}*/
       
-      console.log("************************************************************");
-      console.log(nn2);
+      
       
       
