@@ -1,4 +1,13 @@
 
+console.log("");
+console.log("");
+console.log("=====================================================================");
+console.log("                              RETO 02                                ");
+console.log("=====================================================================");
+console.log("");
+
+
+
 /*01) Utilizando función arrow, crear una función que reciba como parámetros un nombre, apellido y 
       edad y los retorne en un string concatenado “Hola mi nombre es sebastián yabiku y mi edad 33” */
        
@@ -7,7 +16,7 @@
        //Test de la funcion
        console.log("Ejercicio 01: ");
        console.log(func_Arrow("marco","poma",32));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -24,7 +33,7 @@
         //Test de la Funcion
        console.log("Ejercicio 02: ");
        console.log("La suma de los cubos de los Numeros es: " + Sum_Cubes(1,5,9));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -60,7 +69,7 @@
        //Test de la Funcion
        console.log("Ejercicio 03: ")
        Tipo_Dato("a");
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
        
@@ -77,8 +86,7 @@
        //Test de la Funcion
        console.log("Ejercicio 04: ")
        console.log(Sum_All(1,2,3,5,6));
-       console.log("************************************************************");
-
+       console.log("............................................................");
 
 
 
@@ -93,7 +101,7 @@
        //Test de la Funcion
        console.log("Ejercicio 05: ");
        console.log(filterList_Str([1, 2, 3, "x", "y", 10]));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -111,7 +119,7 @@
        //Test de la Funcion
        console.log("Ejercicio 06: ")
        console.log(MinMax([1,2,3,4,5]));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -141,7 +149,7 @@
        //Test de la Funcion
        console.log("Ejercicio 07: ")
        console.log(formatPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 /*08)  Cree una función que tome una matriz de matrices con números. Devuelve una nueva matriz (única) con 
@@ -157,7 +165,7 @@
        //Test de la Funcion
        console.log("Ejercicio 08: ");
        console.log(findLargestNums([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -168,8 +176,53 @@
        charIndex("circumlocution", "c") ➞ [0, 8]
        The first "c" has index 0, the last "c" has index 8. */
 
+       function charIndex(Str_Inp,Char_Inp) {
+              let Arr_Index=[];
+              cond_01=(typeof Str_Inp =="string");
+              cond_02=(typeof Char_Inp =="string");
+
+              if (cond_01 && cond_02) {
+                     for (let i = 0; i < Str_Inp.length; i++) {
+                            if (Str_Inp[i]==Char_Inp) {
+                              Arr_Index.push(i);
+                            }       
+                      }
+                      return Arr_Index   
+              }
+              else{
+                     return null
+              }
+              
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 09: ");
+       console.log(charIndex("hello","l"));
+       console.log("............................................................");
+
+
+
+
 /*10)  Escriba una función que convierta un objeto en una matriz, donde cada elemento representa un par clave-valor.
        toArray({ a: 1, b: 2 }) ➞ [["a", 1], ["b", 2]] */
+
+       function ObjToArray(Obj_Inp) {
+              let Array_Out=[];
+              for ( let index in Obj_Inp){
+                      Array_Out.push([index,Obj_Inp[index]])  
+              }
+              return Array_Out
+        }
+ 
+        //Test de la Funcion
+        console.log("Ejercicio 10: ");
+        console.log(ObjToArray({ a: 1, b: 2 }) );
+        console.log("............................................................");
+ 
+
+
+
+
 
 /*11)  Cree la función que toma una matriz con objetos y devuelve la suma de los presupuestos de las personas.
        AgetBudgets([
@@ -194,8 +247,8 @@
               ])
 
        console.log("Ejercicio 11: ");
-       console.log(getBudgets(Array_Test));
-       console.log("************************************************************");
+       console.log(`la suma de presupuestos de las personas es:${getBudgets(Array_Test)}`);
+       console.log("............................................................");
 
 
 
@@ -206,7 +259,7 @@
             { name: "Steve" },
             { name: "Mike" },
             { name: "John" }
-            ]) ➞ ["Becky", "John", "Steve"] */
+            ]) ➞ ["Steve", "John", "John"] */
 
        function getStudentNames(Arr) {
               let Arreglo=Arr.map(elem=>{return elem.name});
@@ -217,7 +270,7 @@
        Arr_Student=[{ name: "Steve" },{ name: "Mike" },{ name: "John" }]
        console.log("Ejercicio 12: ");
        console.log(getStudentNames(Arr_Student));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -229,6 +282,23 @@
             followers: 10
             }) ➞ [["likes", 2], ["dislikes", 3], ["followers", 10]] */
 
+       function objectToArray(Obj_Inp) {
+             let Array_Out=[];
+             for ( let index in Obj_Inp){
+                     Array_Out.push([index,Obj_Inp[index]])  
+             }
+             return Array_Out
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 13: ");
+       console.log(objectToArray({likes: 2,dislikes: 3,followers: 10}) );
+       console.log("............................................................");
+
+
+
+
+          
 
 /*14)  Cree una función donde, dado el número n, devuelva la suma de todos los números cuadrados  incluyendo n.
        squaresSum(3) ➞ 14
@@ -255,7 +325,7 @@
             Num=10;
             console.log("Ejercicio 14: ");
             console.log("La suma de los "+ Num + " primeros numeros enteros positivos es: "+ squaresSum(Num));
-            console.log("************************************************************");
+            console.log("............................................................");
 
 
 
@@ -272,7 +342,7 @@
        //Test de la Funcion
        console.log("Ejercicio 15: ");
        console.log(multiplyByLength([2, 3, 1, 0]));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -294,8 +364,7 @@
        //Test de la Funcion
        console.log("Ejercicio 16: ");
        console.log(countdown(11));
-       console.log("************************************************************");
-
+       console.log("............................................................");
 
 
 
@@ -312,7 +381,7 @@
        //Test de la Funcion
        console.log("Ejercicio 17: ");
        console.log(diffMaxMin([10, 4, 1, 4, -10, -50, 32, 21]));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -329,7 +398,7 @@
        //Test de la Funcion
        console.log("Ejercicio 18: ");
        console.log(filterList([1, 2, 3, "x", "y", 10]));
-       console.log("************************************************************");
+       console.log("............................................................");
 
 
 
@@ -338,6 +407,7 @@
        necesita repetirse, mientras que el segundo argumento (veces) es la cantidad de veces que se debe repetir el elemento. 
        Devuelve el resultado en una matriz.
        repeat(13, 5) ➞ [13, 13, 13, 13, 13] */
+
        function repeat(val,num) {
               let Arreglo=[];
               for (let i = 0; i < num; i++) {
@@ -350,7 +420,7 @@
         //Test de la Funcion
         console.log("Ejercicio 19: ");
         console.log(repeat(13, 5));
-        console.log("************************************************************");
+        console.log("............................................................");
 
 
 
@@ -359,41 +429,107 @@
        cadena con una vocal especificada.
        "apples and bananas".vreplace("u") ➞ "upplus und bununus" */
 
+       function vreplace(Str_Inp,Char_Inp) {
+              let Str_Out=""
+              Str_Out =Str_Inp.replaceAll("a",Char_Inp);
+              Str_Out =Str_Out .replaceAll("e",Char_Inp);
+              Str_Out =Str_Out .replaceAll("i",Char_Inp);
+              Str_Out =Str_Out .replaceAll("o",Char_Inp);
+              Str_Out =Str_Out .replaceAll("u",Char_Inp);
+
+              return Str_Out      
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 20: ");
+       console.log("apples and bananas");
+       console.log(vreplace("apples and bananas","u"));
+       console.log("............................................................");
+
+
+
 
 /*21)  Te dan una cadena de palabras. Debe encontrar la palabra "Nemo" y devolver una cadena como esta: 
        "¡Encontré a Nemo en [el orden de la palabra que encuentra nemo]!".
        findNemo("I am finding Nemo !") ➞ "I found Nemo at 4!" */
 
+       function FindTxt(Str_Inp,Txt_Inp) {
+              let Str_To_Arr=[];
+              let Arr_FoundTxt=[];
+              let char_temp="";
+
+              let cond_01=(typeof Str_Inp=="string");
+              let cond_02=(typeof Txt_Inp=="string");
+
+              if (cond_01 && cond_02) {
+
+                     //Conversion de String a Array,excluyendo los caracteres " " y ","
+                     for (let i = 0; i < Str_Inp.length; i++) {
+                            if (Str_Inp[i]!=" " && Str_Inp[i]!=",") {
+                                   char_temp=char_temp+Str_Inp[i]  ;
+                            }
+              
+                            if ((Str_Inp[i]==" ") || (Str_Inp[i]==",") ||  (i==(Str_Inp.length-1))){
+                            if (char_temp!="") {
+                                   Str_To_Arr.push(char_temp);
+                            }
+                            char_temp="";
+                            }
+                     }
+
+              
+                     //Busqueda de las posiciones de la palabra requerida en todo el String
+                     for (let j = 0; j < Str_To_Arr.length; j++) {
+                            if (Str_To_Arr[j]==Txt_Inp) {
+                                   Arr_FoundTxt.push(j+1);
+                            }
+                     }
+
+                     //Impresion en consola de lo requerido por la funcion
+                     console.log(`la Palabra "${Txt_Inp}" se encontro en las posiciones: ${Arr_FoundTxt}`);
+                            
+              }
+              else{
+                     console.log(`Por favor,Ingrese datos validos`);
+              }      
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 21: ");
+       FindTxt("I am finding Nemo,Nemo esta triste,Nemo se recuperara pronto!","Nemo")
+       console.log("............................................................");
+       
+
+
+
 
 /*22)  Cree una función que capitalice la última letra de cada palabra.
        capLast("hello") ➞ "hellO" */
 
-       /*console.log("************************************************************");
-       let Arr_test=[13,2,5,7,8,9];
-       let Arr_Str=Arr_test.toString();
-       for (let arg of Arr_test) {
-              console.log(arg)
-              
-       }
-       console.log("************************************************************");
-       console.log( Arr_Str)
-       console.log("************************************************************");
-       console.log(Arr_Str.length);
+       function capLast(Str_Inp) {
+              let Str_Out="";
+              let Str_Temp=Str_Inp.toUpperCase();
 
-       for (let i = 1; i < Arr_Str.length ;i=i+2) {
-              
-              console.log(Arr_Str[i]);
+              for (let i = 0; i < Str_Inp.length; i++) {
+                     if (i<Str_Inp.length-1) {
+                            Str_Out=Str_Out+Str_Inp[i];
+                     }
+
+                     if (i==(Str_Inp.length-1)) {
+                            Str_Out=Str_Out+Str_Temp[i];
+                     }  
+              }
+
+              console.log(`String Original: ${Str_Inp}`);
+              console.log(`String Capitalizada: ${Str_Out}`);
+       }
+
+       //Test de la Funcion
+       console.log("Ejercicio 22: ");
+       capLast("hello");
        
 
-       let xxtoArray=[{ a: 1, b: 2 }];
-       let xxtoArray_Str=xxtoArray.toString();
-       console.log(xxtoArray[0].b);
-       console.log("************************************************************")
-       for (let index = 0; index < xxtoArray_Str.length; index++) {
-              console.log(xxtoArray_Str[index]);
-              
-       }}*/
       
-      
-      
-      
+
+
+       
