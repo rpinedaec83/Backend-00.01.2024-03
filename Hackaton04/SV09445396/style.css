@@ -1,0 +1,33 @@
+body {
+    background-color: cornflowerblue;
+    color: azure;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+button{
+    padding: 5px 20px 5px 20px ; 
+    font-size: 20px;
+    width: 200px;
+    background-color:lightblue;
+}
+
+.ent_datos{
+    display: flex;
+    flex-direction: column;
+    padding: 0 200px 0 200px;
+    background-color:darkgray;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+input{
+    height: 30px;
+}
+
+label{
+    font-size: 17px;
+    font-weight: bold;
+}

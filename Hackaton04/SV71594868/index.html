@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 class="title">HACKATON04</h2>
+<body>
+    <button onclick="ejecutar(1)">Ejercicio 1</button><br>
+    <button onclick="ejecutar(2)">Ejercicio 2</button><br>
+    <button onclick="ejecutar(3)">Ejercicio 3</button><br>
+    <button onclick="ejecutar(4)">Ejercicio 4</button><br>
+    <button onclick="ejecutar(5)">Ejercicio 5</button><br>
+    <script src="script.js"></script>
+    <body>
+
+        <!-- Párrafo oculto -->
+        <p id="parrafo" style="display: none;">
+            Pregunta 1
+            Una función en JavaScript es similar a un procedimiento ,un conjunto de instrucciones que realiza una tarea o calcula un valor, pero para que un procedimiento
+            califique como función, debe tomar alguna entrada y devolver una salida donde hay alguna relación obvia entre la entrada y la salida
+            Una definición de función (también denominada declaración de función o expresión de función) consta de la palabra clave function, seguida de:
+           
+            El nombre de la función.
+            Una lista de parámetros de la función, entre paréntesis y separados por comas.
+            Las declaraciones de JavaScript que definen la función, encerradas entre llaves.
+            Pregunta 2
+            Una función puede tener hasta 255 argumentos.
+             </p>
+        
+        <!-- Botón para mostrar el párrafo -->
+        <button onclick="mostrarParrafo()">PREGUNTAS</button>
+        
+        <script>
+            // Función para mostrar el párrafo
+            function mostrarParrafo() {
+                // Obtener el elemento del párrafo por su id
+                var parrafo = document.getElementById("parrafo");
+                // Cambiar el estilo para mostrar el párrafo
+                parrafo.style.display = "block";
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+body {
+    background-color: rgb(105, 110, 110);
+     color: azure;
+} 
+
+
+
+
+#Eje_01_To_10 button,#Eje_11_To_20 button,#Eje_21_To_30 button,#Eje_31_To_40 button{ 
+    background-color: rgb(206, 29, 132);
+    background: rgb(10, 10, 8);
+    width: 100px;
+    color: rgb(93, 250, 62);
+    
+}

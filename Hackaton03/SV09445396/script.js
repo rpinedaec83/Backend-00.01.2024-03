@@ -1037,7 +1037,6 @@ function ejercicio33() {
 }
 
 function ejercicio34() {
-  // 34.	Hacer un algoritmo que imprima la tabla de multiplicar de los n�meros del uno nueve
 
   let cTabla  = ``;
 

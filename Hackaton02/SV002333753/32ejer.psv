@@ -1,0 +1,76 @@
+// Se quiere saber cuál es la ciudad con la población de más personas, son tres provincias y once ciudades, hacer un algoritmo en Pseint que nos permita saber eso. (NO HAY DATOS SUFICIENTES)
+
+
+Algoritmo CiudadConMasPoblacion
+    
+    Definir provincia1, provincia2, provincia3 Como Entero;
+    Definir ciudad1, ciudad2, ciudad3, ciudad4, ciudad5, ciudad6, ciudad7, ciudad8, ciudad9, ciudad10, ciudad11 Como Entero;
+    Definir poblacionMaxima, ciudadMasPoblada Como Entero;
+    
+    
+    Escribir "Ingrese la población de las ciudades de la provincia 1:";
+    Leer ciudad1, ciudad2, ciudad3;
+    
+    Escribir "Ingrese la población de las ciudades de la provincia 2:";
+    Leer ciudad4, ciudad5, ciudad6;
+    
+    Escribir "Ingrese la población de las ciudades de la provincia 3:";
+    Leer ciudad7, ciudad8, ciudad9, ciudad10, ciudad11;
+    
+    
+    poblacionMaxima <- ciudad1;
+    ciudadMasPoblada <- 1;
+    
+    Si ciudad2 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad2;
+        ciudadMasPoblada <- 2;
+    FinSi
+    
+    Si ciudad3 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad3;
+        ciudadMasPoblada <- 3;
+    FinSi
+    
+    Si ciudad4 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad4;
+        ciudadMasPoblada <- 4;
+    FinSi
+    
+    Si ciudad5 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad5;
+        ciudadMasPoblada <- 5;
+    FinSi
+    
+    Si ciudad6 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad6;
+        ciudadMasPoblada <- 6;
+    FinSi
+    
+    Si ciudad7 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad7;
+        ciudadMasPoblada <- 7;
+    FinSi
+    
+    Si ciudad8 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad8;
+        ciudadMasPoblada <- 8;
+    FinSi
+    
+    Si ciudad9 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad9;
+        ciudadMasPoblada <- 9;
+    FinSi
+    
+    Si ciudad10 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad10;
+        ciudadMasPoblada <- 10;
+    FinSi
+    
+    Si ciudad11 > poblacionMaxima Entonces
+        poblacionMaxima <- ciudad11;
+        ciudadMasPoblada <- 11;
+    FinSi
+    
+    
+    Escribir "La ciudad con más población es la número ", ciudadMasPoblada, " con una población de ", poblacionMaxima, " habitantes.";
+FinAlgoritmo

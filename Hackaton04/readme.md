@@ -30,8 +30,8 @@ En este caso, definiremos una serie de problemas para resolverlos utilizando el 
 4. Escribe una función que tome la base y la altura de un triángulo y devuelva su área.
 triArea(3, 2) ➞ 3
 
-5. Crea una función llamada calculator que recibe 3 parámetros, dos números y
-una operación matemática (+,-,/,x,%), y si la operación no es correcta que envié un mensaje “El parámetro no es reconocido” calculator(2,"+", 2) ➞ 4
+5. Crea una función llamada calculator que recibe 3 parámetros, dos números y una operación matemática 
+(+,-,/,x,%), y si la operación no es correcta que envié un mensaje “El parámetro no es reconocido” calculator(2,"+", 2) ➞ 4
 
 
 PREGUNTAS:

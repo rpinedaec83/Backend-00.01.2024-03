@@ -1,0 +1,56 @@
+/*
+    Hacer un algoritmo en Pseint para una heladería se tienen 4 tipos de empleados ordenados de 
+    la siguiente forma con su número identificador y salario diario correspondiente:
+
+    Cajero (56$/día).
+
+    Servidor (64$/día).
+
+    Preparador de mezclas (80$/día).
+
+    Mantenimiento (48$/día).
+
+    El dueño de la tienda desea tener un programa donde sólo ingrese dos números enteros 
+    que representen al número identificador del empleado y la cantidad de días que trabajó 
+    en la semana (6 días máximos). Y el programa le mostrará por pantalla la cantidad de dinero
+     que el dueño le debe pagar al empleado que ingresó
+*/
+
+Algoritmo CalcularPagoEmpleado
+   
+    Definir idEmpleado, diasTrabajados Como Entero;
+    Definir salarioDiario, pagoTotal Como Real;
+    
+    
+    Escribir "Ingrese el identificador del empleado (1 para Cajero, 2 para Servidor, 3 para Preparador de mezclas, 4 para Mantenimiento):";
+    Leer idEmpleado;
+    Escribir "Ingrese la cantidad de días trabajados en la semana (máximo 6):";
+    Leer diasTrabajados;
+    
+    
+    Si diasTrabajados > 6 Entonces
+        Escribir "Error: El número máximo de días trabajados es 6.";
+        Detener;
+    FinSi
+    
+    
+    Segun idEmpleado Hacer
+        1:
+            salarioDiario <- 56; // Cajero
+        2:
+            salarioDiario <- 64; // Servidor
+        3:
+            salarioDiario <- 80; // Preparador de mezclas
+        4:
+            salarioDiario <- 48; // Mantenimiento
+        De Otro Modo:
+            Escribir "Identificador de empleado no válido.";
+            Detener;
+    FinSegun
+    
+    
+    pagoTotal <- diasTrabajados * salarioDiario;
+    
+    
+    Escribir "El pago total para el empleado es: $", pagoTotal;
+FinAlgoritmo

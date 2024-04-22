@@ -1,0 +1,18 @@
+// Hacer un algoritmo en Pseint que permita al usuario continuar con el programa.
+
+Algoritmo ProgramaConContinuacion
+    
+    Definir opcion Como Caracter;
+    
+    
+    Escribir "Bienvenido al programa.";
+    
+    Repetir
+        
+        Escribir "¿Desea continuar con el programa? (S/N)";
+        Leer opcion;
+        
+    Hasta Que opcion = "N" o opcion = "n";
+    
+    Escribir "Gracias por utilizar el programa. ¡Hasta luego!";
+FinAlgoritmo

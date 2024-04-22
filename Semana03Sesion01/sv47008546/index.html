@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function myFunction1() {
+            document.getElementById("demo7").innerHTML = "Paragraph changed.";
+        }
+    </script>
+</head>
+
+<body>
+    // comillas dobles
+    <h2>What Can JavaScript Do?</h2>
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <button type="button" onclick='document.getElementById("demo").innerHTML ="Hello JavaScript!"'>Click Me!</button>
+
+    // comillas simples
+    <h2>What Can JavaScript Do?</h2>
+    <p id="demo2">JavaScript can change HTML content.</p>
+
+    <button type="button" onclick="document.getElementById('demo2').innerHTML = 'Hello JavaScript!'">Click Me!</button>
+
+    // Cambiar valores de atributos
+    <h2>What Can JavaScript Do?</h2>
+    <p>JavaScript can change HTML attribute values.</p>
+    <p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+    <button onclick="document.getElementById('myImage').src='img/pic_bulbon.gif'">Turn on the light</button>
+    <img id="myImage" src="img/pic_bulbon.gif" style="width:100px">
+    <button onclick="document.getElementById('myImage').src='img/pic_bulboff.gif'">Turn off the light</button>
+
+    // Puede cambiar el formato del texto
+    <h2>What Can JavaScript Do?</h2>
+    <p id="demo3">JavaScript can change the style of an HTML element.</p>
+
+    <button type="button" onclick="document.getElementById('demo3').style.fontSize='35px'">Click Me!</button>
+
+    // Puede ocultar el texto del HTML con Style Display
+    <h2>What Can JavaScript Do?</h2>
+    <p id="demo4">JavaScript can hide HTML elements.</p>
+
+    <button type="button" onclick="document.getElementById('demo4').style.display='none'">Click Me!</button>
+
+    // Puede mostrar el texto oculto de HTML con Style Display
+    <h2>What Can JavaScript Do?</h2>
+    <p>JavaScript can show hidden HTML elements.</p>
+
+    <p id="demo5" style="display:none">Hello JavaScript!</p>
+    <button type="button" onclick="document.getElementById('demo5').style.display='block'">Click Me!</button>
+
+    //Puedo insertar/Reemplazar etiquetas Script dentro de una etiqueta HTML "id"
+    <h2>JavaScript in Body</h2>
+    <p id="demo6"></p>
+    <script>
+        document.getElementById("demo6").innerHTML = "My First JavaScript";
+    </script>
+
+    //Se puede insertar la etiqueta Script en la cabecera (Lo que modificara el cuerpo)
+    <h2>Demo JavaScript in Head</h2>
+    <p id="demo7">A Paragraph.</p>
+    <button type="button" onclick="myFunction1()">Try it</button>
+
+
+    // Se puede insertar la etiqueta Scritp directamente en el cuerpo y modificara o reemplazara una etiqueta HTML
+    <h2>Demo JavaScript in Body</h2>
+    <p id="demo8">A Paragraph.</p>
+
+    <button type="button" onclick="myFunction2()">Try it</button>
+    <script>
+        function myFunction2() {
+            document.getElementById("demo8").innerHTML = "Paragraph changed.";
+        }
+    </script>
+
+    //Modificando el texto con un Script externo (ubicado en otro archivo) a traves de un link
+    <h2>Demo External JavaScript</h2>
+    <p id="demo9">A Paragraph.</p>
+
+    <button type="button" onclick="myFunction()">Try it</button>
+
+    <p>This example links to "myScript.js".</p>
+    <p>(myFunction is stored in "myScript.js")</p>
+    <script src="index.js"></script>
+
+    //JavaScript puede "mostrar" datos de diferentes maneras: Escribir en un elemento HTML usando inner.html
+    <h2>My First Web Page</h2>
+    <p>My First Paragraph.</p>
+    <p id="demo10"></p>
+
+    <script>
+        document.getElementById("demo10").innerHTML = 5 + 6;
+    </script>
+
+    //JavaScript puede "mostrar" datos de diferentes maneras: Usando documento.write()
+    <h2>My First Web Page</h2>
+    <p>My first paragraph.</p>
+    <p>Never call document.write after the document has finished loading.
+        It will overwrite the whole document.</p>
+
+    <script>
+        document.write(5 + 6);
+    </script>
+
+    //El uso de document.write() después de cargar un documento HTML eliminará todo el HTML existente: Ejemplo
+    <h2>My First Web Page</h2>
+    <p>My first paragraph.</p>
+
+    <button type="button" onclick="document.write(5 + 6)">Try it</button>
+
+    //JavaScript puede "mostrar" datos de diferentes maneras: Usando ventana.alert()
+    <h2>My First Web Page</h2>
+    <p>My first paragraph.</p>
+
+    <script>
+        window.alert(5 + 6);
+    </script>
+
+    //JavaScript puede "mostrar" datos de diferentes maneras: Puede omitir la palabra clave: "window"
+    <h2>My First Web Page</h2>
+    <p>My first paragraph.</p>
+
+    <script>
+        alert(5 + 6);
+    </script>
+
+    //JavaScript puede "mostrar" datos de diferentes maneras: Usando consola.log()
+
+    <h2>Activate Debugging</h2>
+
+    <p>F12 on your keyboard will activate debugging.</p>
+    <p>Then select "Console" in the debugger menu.</p>
+    <p>Then click Run again.</p>
+
+    <script>
+        console.log(5 + 6);
+    </script>
+
+    //boton para mandar a imprimir la ventana actual
+    <h2>The window.print() Method</h2>
+    <p>Click the button to print the current page.</p>
+
+    <button onclick="window.print()">Print this page</button>
+
+    //Declaraciones en JavaScript
+    <h2>JavaScript Statements</h2>
+    <p>A <b>JavaScript program</b> is a list of <b>statements</b> to be executed by a computer.</p>
+    <p id="demo11"></p>
+
+    <script>
+        let x, y, z;  // Statement 1
+        x = 5;        // Statement 2
+        y = 6;        // Statement 3
+        z = x + y;    // Statement 4
+
+        document.getElementById("demo11").innerHTML =
+            "The value of z is " + z + ".";  
+    </script>
+
+
+    //Estamos insertando un texto con la etiqueta script / a traves de Declaraciones
+    <h2>JavaScript Statements</h2>
+    <p>In HTML, JavaScript statements are executed by the browser.</p>
+    <p id="demo12"></p>
+
+    <script>
+        document.getElementById("demo12").innerHTML = "Hello Dolly.";
+    </script>
+
+    //El punto y coma separa las declaraciones de JavaScript. Agregue un punto y coma al final de cada declaración
+    ejecutable.
+
+    <h2>JavaScript Statements</h2>
+    <p>JavaScript statements are separated by semicolons.</p>
+    <p id="demo13"></p>
+
+    <script>
+        let a, b, c;
+        a = 5;
+        b = 6;
+        c = a + b;
+        document.getElementById("demo13").innerHTML = c;
+    </script>
+
+    //Cuando están separados por punto y coma, se permiten varias declaraciones en una línea:
+    <h2>JavaScript Statements</h2>
+    <p>Multiple statements on one line are allowed.</p>
+    <p id="demo14"></p>
+
+    <script>
+        let a1, b1, c1;
+        a1 = 5; b1 = 6; c1 = a1 + b1;
+        document.getElementById("demo14").innerHTML = c;
+    </script>
+
+    //Si una declaración de JavaScript no cabe en una línea, el mejor lugar para dividirla es después de un operador:
+    <h2>JavaScript Statements</h2>
+    <p>The best place to break a code line is after an operator or a comma.</p>
+    <p id="demo15"></p>
+
+    <script>
+        document.getElementById("demo15").innerHTML =
+            "Hello Dolly!";
+    </script>
+
+
+//Las declaraciones de JavaScript se pueden agrupar en bloques de código, dentro de llaves {...}.El propósito de los bloques de código 
+//es definir declaraciones que se ejecutarán juntas.
+    <h2>JavaScript Statements</h2>
+    <p>JavaScript code blocks are written between { and }</p>
+    <button type="button" onclick="myFunction3()">Click Me!</button>
+    <p id="demo16"></p>
+    <p id="demo17"></p>
+
+    <script>
+        function myFunction3() {
+            document.getElementById("demo16").innerHTML = "Hello Dolly!";
+            document.getElementById("demo17").innerHTML = "How are you?";
+        }
+    </script>
+
+//Valores de JavaScript: Literales de JavaScript, Los números se escriben con o sin decimales:
+<h2>JavaScript Numbers</h2>
+<p>Number can be written with or without decimals.</p>
+<p id="demo18"></p>
+
+<script>
+document.getElementById("demo18").innerHTML = 10.50;
+</script>
+
+//Valores de JavaScript: Literales de JavaScript, Las cadenas son texto, escrito entre comillas dobles o simples:
+<h2>JavaScript Strings=texto</h2>
+<p>Strings can be written with double or single quotes.</p>
+<p id="demo19"></p>
+
+<script>
+document.getElementById("demo19").innerHTML = 'John Doe';
+</script>
+
+//En un lenguaje de programación, las variables se utilizan para almacenar valores de datos.
+//Se utiliza un signo igual para asignar valores a las variables.//
+
+<h2>JavaScript Variables</h2>
+<p>In this example, x is defined as a variable.
+Then, x is assigned the value of 6:</p>
+<p id="demo20"></p>
+
+<script>
+let x1;
+x1 = 6;
+document.getElementById("demo20").innerHTML = x1;
+</script>
+
+//Usando operadores arimetmeticos
+<h2>JavaScript Operators</h2>
+<p>JavaScript uses arithmetic operators to compute values (just like algebra).</p>
+<p id="demo21"></p>
+
+<script>
+document.getElementById("demo21").innerHTML = (5 + 6) * 10;
+</script>
+
+<!--Las expresiones se calculan en valores.-->
+<h2>JavaScript Expressions</h2>
+<p>Expressions compute to values.</p>
+<p id="demo22"></p>
+
+<script>
+document.getElementById("demo22").innerHTML = 5 * 10;
+</script>
+
+<!--Las expresiones también pueden contener valores en variables:-->
+<h2>JavaScript Expressions</h2>
+<p>Expressions compute to values.</p>
+<p id="demo23"></p>
+
+<script>
+var x2;
+x2 = 5;
+document.getElementById("demo23").innerHTML = x2 * 10;
+</script>
+
+<!-- Los valores pueden ser de varios tipos, como números y cadenas. -->
+<h2>JavaScript Expressions</h2>
+<p>Expressions compute to values.</p>
+<p id="demo24"></p>
+
+<script>
+document.getElementById("demo24").innerHTML = "John" + " "  + "Doe";
+</script>
+
+<!-- Variables no declaradas, ojo al final se debe colocar el operador "+" para que lo reconozca como numero-->
+<h1>JavaScript Variables</h1>
+<p>In this example, x, y, and z are undeclared.</p>
+<p>They are automatically declared when first used.</p>
+<p id="demo25"></p>
+
+<script>
+x3 = 5;
+y3 = 6;
+z3 = x3 + y3;
+document.getElementById("demo25").innerHTML =
+"The value of z is: " + z3;
+</script>
+
+<!-- Las cadenas se escriben entre comillas y Los números se escriben sin comillas.-->
+<h1>JavaScript Variables</h1>
+<p>Strings(cadenas) are written with quotes(comillas simples o dobles).</p>
+<p>Numbers are written without quotes(comillas).</p>
+<p id="demo26"></p>
+
+<script>
+const pi = 3.14;
+let person = "John Doe";
+let answer = 'Yes I am!';
+
+document.getElementById("demo26").innerHTML =
+pi + "<br>" + person + "<br>" + answer;
+</script>
+
+<!-- creamos una variable llamada carNamey le asignamos el valor "Volvo".-->
+<h1>JavaScript Variables</h1>
+<p>Create a variable, assign a value to it, and display it:</p>
+<p id="demo27"></p>
+
+<script>
+let carName = "Volvo";
+document.getElementById("demo27").innerHTML = carName;
+</script>
+
+<!-- Observamos dos declaraciones para una misma variable, sin embargo esta se quedara con el valor asignado en la primera -->
+<h1>JavaScript Variables</h1>
+<p>If you re-declare a JavaScript variable, it will not lose its value.</p>
+<p id="demo28"></p>
+
+<script>
+var carName2 = "Volvo";
+var carName2;
+document.getElementById("demo28").innerHTML = carName2;
+</script>
+
+
+<!--El signo de dólar se trata como una letra en los nombres de JavaScript-->
+<h1>JavaScript Variables</h1>
+<p>The dollar sign is treated as a letter in JavaScript names.</p>
+<p id="demo29"></p>
+
+<script>
+let $$$ = 2;
+let $myMoney = 5;
+document.getElementById("demo29").innerHTML = $$$ + $myMoney;
+</script>
+
+
+<button onclick="mueveReloj()">Validar</button>
+      <h5 id="result171"></h5>
+      <h5 id="result172"></h5>
+      <h5 id="result173"></h5>
+      <h5 id="result174"></h5>
+
+      <h2>JavaScript const</h2>
+      <p>Declaring a constant array does NOT make the elements unchangeable:</p>   
+      <p id="demo"></p>
+      
+      <script>
+      // Create an Array:
+      const cars = ["Saab", "Volvo", "BMW"];
+      
+      // Change an element: [el valor asignado dentro de los corchetes señala al parametro declarado en el array, 
+      //siempre empieza en "[0]" como primer elemento, si colocamos [1] ira por el segundo parametro declarado en nuestro array]
+      cars[0] = "Toyota";
+      
+      // Add an element:
+      cars.push("Audi");
+      
+      // Display the Array:
+      document.getElementById("demo").innerHTML = cars; 
+      </script>
+      
+
+      <h2>JavaScript const</h2>
+      <p>Declaring a constant object does NOT make the objects properties unchangeable:</p>     
+      <p id="demo"></p>
+      
+      <script>
+      // Create an object:
+      const car = {type:"Fiat", model:"500", color:"white"};
+      
+      // Change a property:
+      car.color = "red";
+      
+      // Add a property:
+      car.owner = "Johnson";
+      
+      // Display the property:
+      document.getElementById("demo").innerHTML = "Car owner is " + car.owner; 
+      </script>
+
+<h1>JavaScript Arithmetic</h1>
+<h2>The ++ Operator</h2>
+
+<p id="demo"></p>
+
+<script>
+let x = 5;
+x++;  // representa que X aumentara en una unidad la proxima vez que se llame a la variable.
+let z = x;
+document.getElementById("demo").innerHTML = z;
+</script>
+
+
+<h1>JavaScript Assignments</h1>
+<h2>Left Shift Assignment</h2>
+<h3>The <<= Operator</h3>
+<p id="demo"></p>
+
+<script>
+let x = -100;
+x <<= 1; //realiza una secuencia en cadena [1] valor actual de [x=-100] aumenta [-100] = -200; [2] valor actual de X[1] = -200 --> auemnta [-200]
+// = -400; [3] valor de X[2] = -400 --> aumenta el mismo valor [-400] --> x[3]=-800; sigue sucesivamente... 
+document.getElementById("demo").innerHTML = "Value of x is: " + x;
+</script>
+
+<h1>JavaScript Assignments</h1>
+<h2>Right Shift Assignment</h2>
+<h3>The >>= Operator</h3>
+<p id="demo"></p>
+
+<script>
+let x = -100;
+x >>= 1; // realiza una secuencia en cadena [1] valor actual de [x=-100] disminuye a su mitad [-50]; x[1] = -50 (valor actual); x[2]= -25
+// de su valor actual x[1]=-50 disminuye su mitad dejando como resultado x[2] = -25....asi seguira sucesivamente.
+document.getElementById("demo").innerHTML = "Value of x is: " + x;
+</script>
+
+
+<h1>JavaScript Assignments</h1>
+<h2>Logical AND Assignment</h2>
+<h3>The &&= Operator</h3>
+<p>If the first value is true, the second value is assigned.</p>
+<p id="demo"></p>
+
+<script>
+let x = 100;
+x &&= 5; //Si el primer valor es considera TRUE, el segundo valor reemplazara al primero
+document.getElementById("demo").innerHTML = "Value of x is: " + x;
+</script>
+
+
+<h1>JavaScript Assignments</h1>
+<h2>Logical OR Assignment</h2>
+<h3>The ||= Operator</h3>
+<p>If the first value is false, the second value is assigned:</p>
+<p id="demo"></p>
+
+<script>
+let x = undefined;
+x ||= 5; // Si el primer valor es considerado False [undefined], el segundo valor [5] reemplazara al primero [undefined]
+document.getElementById("demo").innerHTML = "Value of x is: " + x;
+</script>
+
+<h1>JavaScript Assignments</h1>
+<h2>The ??= Operator</h2>
+<p>The ??= operator is used between two values. If the first value is undefined or null, the second value is assigned.</p>
+<p id="demo"></p>
+
+<script>
+let x;
+document.getElementById("demo").innerHTML = x ??= 5; // Si el primer valor es undefined o nulo, el segundo valor es asignado.
+</script>
+
+
+<h2>JavaScript Booleans</h2>
+<p>Booleans can have two values: true or false:</p>
+<p id="demo"></p>
+
+<script>
+let x = 5;
+let y = 5;
+let z = 6;
+
+document.getElementById("demo").innerHTML =
+(x == y) + "<br>" + (x == z);
+</script>
+
+
+<h1>JavaScript Operators</h1>
+<h2>The typeof Operator</h2>
+<p>The typeof operator returns the type of a variable or an expression.</p>
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = 
+typeof "" + "<br>" +
+typeof "John" + "<br>" + 
+typeof "John Doe";
+</script>
+
+<h1>JavaScript Operators</h1>
+<h2>The typeof Operator</h2>
+<p>The typeof operator returns the type of a variable or an expression.</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = 
+typeof "" + "<br>" +   // da como resultado = "String"
+typeof "John" + "<br>" + // da como resultado = "String"
+typeof 16; // da como resultado = "Number"
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
