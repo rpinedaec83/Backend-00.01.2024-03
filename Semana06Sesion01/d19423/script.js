@@ -51,6 +51,70 @@
 //     } 
 //     sessionStorage.setItem("login", JSON.stringify(objLogin));
 // }
+var $table = $('#table')
+window.accionEvents = {
+    'click .like': function (e, value, row, index) {
+      editarItem(row);
+    },
+    'click .remove': function (e, value, row, index) {
+        borrarItem(row);
+      
+    }
+  }
+
+function editarItem(row){
+    console.log(arrGundams);
+    
+    const index = arrGundams.indexOf(row);
+    console.log(index);
+    let nombre = prompt("Agrega el nuevo nombre");
+    let descripcion = prompt("Agrega la nueva descripcion");
+    let imagen = prompt("Agrega la nueva imagen");
+    let escala = prompt("Agrega la nueva escala");
+    let isCustom = prompt("Esta modificado???");
+    let custom = ""
+    if(isCustom == "SI"){
+        custom = prompt("Que le modificaste???");
+    }
+    arrGundams[index].nombre = nombre;
+    arrGundams[index].descripcion = descripcion;
+    arrGundams[index].imagen = imagen;
+    arrGundams[index].escala = escala;
+
+    arrGundams[index].isCustom = (isCustom == "SI" ? true : false);
+    arrGundams[index].custom =  (isCustom == "SI" ? custom : "");
+
+    console.log(arrGundams);
+    $table.bootstrapTable('load', arrGundams);
+    localStorage.setItem("gundams",JSON.stringify(arrGundams));
+}
+
+  function borrarItem(row){
+    
+    console.log(arrGundams);
+    
+    const index = arrGundams.indexOf(row);
+    console.log(index);
+    if (index > -1) { // only splice array when item is found
+        arrGundams.splice(index, 1); // 2nd parameter means remove one item only
+    }
+    console.log(arrGundams);
+    $table.bootstrapTable('load', arrGundams);
+    localStorage.setItem("gundams",JSON.stringify(arrGundams));
+}
+    
+
+  function accionFormatter(value, row, index) {
+    return [
+      '<a class="like" href="javascript:void(0)" title="Like">',
+      '<i class="fa fa-heart"></i>',
+      '</a>  ',
+      '<a class="remove" href="javascript:void(0)" title="Remove">',
+      '<i class="fa fa-trash"></i>',
+      '</a>'
+    ].join('')
+  }
+
 let arrGundams = [];
 let objLocalGundams = localStorage.getItem("gundams");
 if(objLocalGundams!=null)
@@ -67,6 +131,49 @@ if(login==null){
         //window.location.replace("file:///Users/rpineda/Fuentes/Backend-00.01.2024-03/Semana06Sesion01/d19423/login.html");
 }
 
+$("#btnEliminar").on("click",function(event){
+    event.preventDefault();
+    console.log("Eliminar todo");
+    arrGundams = [];
+    localStorage.setItem("gundams",JSON.stringify(arrGundams));
+    $table.bootstrapTable('load',arrGundams);
+});
+
+function detailFormatter(index, row) {
+    console.log(row)
+    var html = []
+    $.each(row, function (key, value) {
+        switch (key) {
+            case "imagen":
+                html.push('<img src="img/'+value+'.webp" alt="" srcset="" width="300px">')
+       
+                break;
+            case "isCustom":
+                if(value){
+                    let arrCustom = row.custom.split(',');
+                    console.log(arrCustom);
+                    let htmlstr = "<b>MODIFICACIONES:</b><ul>";
+                    arrCustom.forEach(element => {
+                        htmlstr+="<li>"+element+"</li>"
+                    });
+                    htmlstr += "</ul>";
+                    html.push('<p>'+htmlstr+'</p>')
+                }
+                
+                break;
+            case "custom":
+                break;
+            default:
+                html.push('<p><b>' + key.toUpperCase() + ':</b> ' + value + '</p>')
+                break;
+        }
+
+       
+      
+    })
+    return html.join('')
+  }
+
 $("#btnAgregar").on("click",function(event){
     event.preventDefault();
     console.log("Agregando un nuevo");
@@ -79,18 +186,21 @@ $("#btnAgregar").on("click",function(event){
     if(isCustom == "SI"){
         custom = prompt("Que le modificaste???");
     }
+
+
+    
     let objGundam = new Gundam(nombre,descripcion,imagen,escala,(isCustom == "SI" ? true : false), (isCustom == "SI" ? custom : ""))
     arrGundams.push(objGundam);
     console.log(arrGundams);
     localStorage.setItem("gundams",JSON.stringify(arrGundams));
-    $('#table').bootstrapTable('load',arrGundams);
+    $table.bootstrapTable('load',arrGundams);
 })
 
 
 init();
 function init(){
-    $('#table').bootstrapTable();
-    $('#table').bootstrapTable('load',arrGundams);
+    $table.bootstrapTable();
+    $table.bootstrapTable('load',arrGundams);
 }
 
 class Gundam{
@@ -103,6 +213,8 @@ class Gundam{
         this.custom = custom;
     }
 }
+
+
 
 
 

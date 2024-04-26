@@ -65,18 +65,23 @@
                     </p>
                     <p>
                         <a id="btnAgregar" class="btn btn-primary btn-large" href="#">Agregar</a>
+                        <a id="btnEliminar" class="btn btn-primary btn-large" href="#">Eliminar</a>
                     </p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <table id="table">
+                <table id="table"
+                data-search="true"
+                data-detail-view="true"
+                data-detail-formatter="detailFormatter"
+                >
                     <thead>
                         <tr>
                           <th data-field="nombre">Nombre</th>
                           <th data-field="escala">Escala</th>
-                          
+                          <th data-field="accion" data-formatter="accionFormatter" data-events="accionEvents">Acciones</th>
                         </tr>
                       </thead>
                 </table>
@@ -105,9 +110,13 @@
             </div>
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/e59191e4cc.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.22.4/dist/bootstrap-table.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
