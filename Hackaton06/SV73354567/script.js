@@ -131,10 +131,10 @@ class ReparacionCelular {
         entregarBtn.addEventListener("click", () => {
             this.entregarCelular(celular, entregarBtn);
             // Guardar estado del botón en localStorage
-            localStorage.setItem(`boton_autorizar_${celular.numeroSerie}`, "disabled");
+            localStorage.setItem(`boton_entregar_${celular.numeroSerie}`, "disabled");
         });
         // Verificar y aplicar estado guardado del botón
-        const estadoGuardado = localStorage.getItem(`boton_autorizar_${celular.numeroSerie}`);
+        const estadoGuardado = localStorage.getItem(`boton_entregar_${celular.numeroSerie}`);
         if (estadoGuardado === "disabled") {
             entregarBtn.disabled = true;
             entregarBtn.textContent = "Entregado a Cliente";
@@ -142,8 +142,9 @@ class ReparacionCelular {
         }
         estadoCell.appendChild(entregarBtn);
 
-        this.guardarRegistros2(); // Guardar registros después de insertar en la tabla.
+        
         document.getElementById("tablaReparados").style.display = "block";
+        this.guardarRegistros2(); // Guardar registros después de insertar en la tabla.
         
     }
 
