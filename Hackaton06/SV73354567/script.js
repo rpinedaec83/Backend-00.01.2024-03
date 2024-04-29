@@ -68,7 +68,21 @@ class ReparacionCelular {
         const repararBtn = document.createElement("button");
         repararBtn.textContent = "Listo para Reparacion";
         repararBtn.classList.add("btn", "btn-primary", "btn-sm");
-        repararBtn.addEventListener("click", () => this.repararCelular(celular, repararBtn));
+        
+        
+        repararBtn.addEventListener("click", () => {
+            this.repararCelular(celular, repararBtn);
+            // Guardar estado del botón en localStorage
+            
+            localStorage.setItem(`boton_reparar_${celular.numeroSerie}`, "disabled");
+            
+        });
+        // Verificar y aplicar estado guardado del botón
+    const estadoGuardado = localStorage.getItem(`boton_reparar_${celular.numeroSerie}`);
+    if (estadoGuardado === "disabled") {
+        repararBtn.disabled = true;
+        repararBtn.textContent = "Reparado";
+    }
         estadoCell.appendChild(repararBtn);
 
         document.getElementById("tablaPendientes").style.display = "block";
@@ -92,6 +106,8 @@ class ReparacionCelular {
         this.reparado.push(celular);
         this.guardarRegistros2();
         this.mostrarEnTablaReparados(celular);
+
+       
     }
 
     mostrarEnTablaReparados(celular) {
@@ -111,16 +127,31 @@ class ReparacionCelular {
         const entregarBtn = document.createElement("button");
         entregarBtn.textContent = "Listo para Entregar";
         entregarBtn.classList.add("btn", "btn-primary", "btn-sm");
-        entregarBtn.addEventListener("click", () => this.entregarCelular(celular, entregarBtn));
+
+        entregarBtn.addEventListener("click", () => {
+            this.entregarCelular(celular, entregarBtn);
+            // Guardar estado del botón en localStorage
+            localStorage.setItem(`boton_autorizar_${celular.numeroSerie}`, "disabled");
+        });
+        // Verificar y aplicar estado guardado del botón
+        const estadoGuardado = localStorage.getItem(`boton_autorizar_${celular.numeroSerie}`);
+        if (estadoGuardado === "disabled") {
+            entregarBtn.disabled = true;
+            entregarBtn.textContent = "Entregado a Cliente";
+            
+        }
         estadoCell.appendChild(entregarBtn);
 
+        this.guardarRegistros2(); // Guardar registros después de insertar en la tabla.
         document.getElementById("tablaReparados").style.display = "block";
+        
     }
 
-    entregarCelular(celular, repararBtn) {
-        repararBtn.textContent = "Entregado a Cliente";
+    entregarCelular(celular, entregarBtn) {
+        entregarBtn.textContent = "Entregado a Cliente";
         alert("Celular Entregado")
-        repararBtn.disabled = true; // Deshabilitar el botón después de Reparar
+        entregarBtn.disabled = true; // Deshabilitar el botón después de Reparar
+        
     }
 
     configurar() {
@@ -188,8 +219,25 @@ class ReparacionCelular {
         const autorizarBtn = document.createElement("button");
         autorizarBtn.textContent = "Autorizar y abonar el 50%";
         autorizarBtn.classList.add("btn", "btn-primary", "btn-sm");
-        autorizarBtn.addEventListener("click", () => this.autorizarAbonar(celular, autorizarBtn));
+
+        /*autorizarBtn.addEventListener("click", () => this.autorizarAbonar(celular, autorizarBtn));
+        estadoCell.appendChild(autorizarBtn);*/
+
+        autorizarBtn.addEventListener("click", () => {
+            this.autorizarAbonar(celular, autorizarBtn);
+            // Guardar estado del botón en localStorage
+            localStorage.setItem(`boton_autorizar_${celular.numeroSerie}`, "disabled");
+        });
+        // Verificar y aplicar estado guardado del botón
+        const estadoGuardado = localStorage.getItem(`boton_autorizar_${celular.numeroSerie}`);
+        if (estadoGuardado === "disabled") {
+            autorizarBtn.disabled = true;
+            autorizarBtn.textContent = "Autorizado y Abonado";
+            
+        }
         estadoCell.appendChild(autorizarBtn);
+
+
 
         this.guardarRegistros(); // Guardar registros después de insertar en la tabla.
 
@@ -241,8 +289,8 @@ class Tecnico {
 }
 
 const reparacionCelular = new ReparacionCelular({
-    vSistema: "Hackaton 05 - Servicio de Reparacion de Celulares",
-    vSede: "Kevin Carlos Tenazoa Cuba - BackEnd JavaScript"
+    vSistema: "Hackaton 06 - Servicio de Reparacion de Celulares",
+    vSede: "Kevin Carlos Tenazoa Cuba - WebStorage BackEnd JavaScript"
 });
 
 document.addEventListener("DOMContentLoaded", function () {
