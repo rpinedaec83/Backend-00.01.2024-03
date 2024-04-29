@@ -32,6 +32,11 @@ class ReparacionCelular {
                 this.mostrarEnTablaReparados(celular);
             });
         }
+
+
+
+
+
     }
 
     guardarRegistros() {
@@ -67,11 +72,13 @@ class ReparacionCelular {
         estadoCell.appendChild(repararBtn);
 
         document.getElementById("tablaPendientes").style.display = "block";
+        this.guardarRegistros1
     }
 
     autorizarAbonar(celular, autorizarBtn) {
         autorizarBtn.textContent = "Autorizado y Abonado";
         autorizarBtn.disabled = true; // Deshabilitar el botón después de autorizar
+        
 
         this.registros2.push(celular);
         this.guardarRegistros1();
@@ -84,13 +91,6 @@ class ReparacionCelular {
 
         this.reparado.push(celular);
         this.guardarRegistros2();
-
-        const index = this.registros2.indexOf(celular);
-        if (index !== -1) {
-            this.registros2.splice(index, 1);
-            this.guardarRegistros1();
-        }
-
         this.mostrarEnTablaReparados(celular);
     }
 
