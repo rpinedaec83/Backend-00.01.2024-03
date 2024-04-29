@@ -5,6 +5,7 @@ class ReparacionCelular {
         this.tecnicos = [];
         this.registrosPendientes = [];
         this.registros2 = [];
+        this.reparado = [];
     }
 
     cargarRegistros() {
@@ -23,16 +24,26 @@ class ReparacionCelular {
                 this.mostrarEnTablaPendientes(celular);
             });
         }
+
+        const reparado = localStorage.getItem("reparado");
+        if (reparado) {
+            this.reparado = JSON.parse(reparado);
+            this.reparado.forEach(celular => {
+                this.mostrarEnTablaReparados(celular);
+            });
+        }
     }
 
     guardarRegistros() {
         localStorage.setItem("registrosPendientes", JSON.stringify(this.registrosPendientes));
-        //localStorage.setItem("registros2", JSON.stringify(this.registros2));
     }
 
     guardarRegistros1() {
-        
         localStorage.setItem("registros2", JSON.stringify(this.registros2));
+    }
+
+    guardarRegistros2() {
+        localStorage.setItem("reparado", JSON.stringify(this.reparado));
     }
 
     mostrarEnTablaPendientes(celular) {
@@ -54,9 +65,8 @@ class ReparacionCelular {
         repararBtn.classList.add("btn", "btn-primary", "btn-sm");
         repararBtn.addEventListener("click", () => this.repararCelular(celular, repararBtn));
         estadoCell.appendChild(repararBtn);
-       
+
         document.getElementById("tablaPendientes").style.display = "block";
-        this.guardarRegistros1()
     }
 
     autorizarAbonar(celular, autorizarBtn) {
@@ -72,6 +82,19 @@ class ReparacionCelular {
         repararBtn.textContent = "Reparado";
         repararBtn.disabled = true; // Deshabilitar el botón después de Reparar
 
+        this.reparado.push(celular);
+        this.guardarRegistros2();
+
+        const index = this.registros2.indexOf(celular);
+        if (index !== -1) {
+            this.registros2.splice(index, 1);
+            this.guardarRegistros1();
+        }
+
+        this.mostrarEnTablaReparados(celular);
+    }
+
+    mostrarEnTablaReparados(celular) {
         const listaReparados = document.getElementById("listaReparados");
         const row = listaReparados.insertRow();
 
@@ -218,8 +241,8 @@ class Tecnico {
 }
 
 const reparacionCelular = new ReparacionCelular({
-    vSistema: "Hackaton 06 - Servicio de Reparacion de Celulares",
-    vSede: "Kevin Carlos Tenazoa Cuba - WebStorage"
+    vSistema: "Hackaton 05 - Servicio de Reparacion de Celulares",
+    vSede: "Kevin Carlos Tenazoa Cuba - BackEnd JavaScript"
 });
 
 document.addEventListener("DOMContentLoaded", function () {
