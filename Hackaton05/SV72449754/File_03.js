@@ -185,9 +185,15 @@ function crear_OrdenServicio(){
 function cargarInfoCliente(obj) {
     document.getElementById("nombreCliente").value = obj.Cliente.Usuario.Nombre;
     document.getElementById("DocumentoCliente").value = obj.Cliente.Usuario.Documento;
-    document.getElementById("equipoCliente").value = `${obj.Cliente.Tipo} /Marca: ${obj.Cliente.Marca} /Modelo:${obj.Cliente.Modelo}`;
+    document.getElementById("equipoCliente").value = `${obj.Cliente.Tipo} / Marca: ${obj.Cliente.Marca} / Modelo: ${obj.Cliente.Modelo}`;
     document.getElementById("Dx01Cliente").value = obj.Diagnostico[0];
-    document.getElementById("TecnicoCliente").value = obj.Tecnico.Nombre;
+    document.getElementById("TecnicoCliente").value =`
+    ${obj.Tecnico.Nombre} 
+    Experto en Marcas segun dispositivo:
+    Celular: ${obj.Tecnico.Skills[0].marca}
+    SmartWatch: ${obj.Tecnico.Skills[1].marca}
+    Tablet: ${obj.Tecnico.Skills[2].marca}
+    Laptop: ${obj.Tecnico.Skills[3].marca}`;
 
 }
 
