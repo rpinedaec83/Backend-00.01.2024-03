@@ -269,3 +269,32 @@ html {
     color: #0d0d0d;
     
   }
+
+  .Inp_Label{
+    color: blue;
+    font-size: large;
+  }
+
+  #CtnResumen{
+    border-color: #121416;
+  }
+
+  
+  #tlbResumen {
+
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #e8e8f1;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    
+   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+   text-align: left;
+  }
+
+  .td_Datos{
+    padding: 10px;
+  }
