@@ -21,7 +21,9 @@ Demostrarás todo lo aprendido en este reto que se basará en las clases dictada
 ### TÍTULO: NodeJS
 Utilizar Javascript para definir algoritmos mediante el uso de clases y objetos
 EL PROBLEMA: 
-Se necesita programar un **API Gateway**, es decir un programa que devuelva la consulta centralizada de conexiones API de otras aplicaciones, por lo tanto vamos a realizar una pagina web en NodeJS que nos ayude a consultar la siguiente lista de API's:
+Se necesita programar un **API Gateway**, es decir un programa que devuelva la consulta
+centralizada de conexiones API de otras aplicaciones, por lo tanto vamos a realizar una
+pagina web en NodeJS que nos ayude a consultar la siguiente lista de API's:
 
 - Consultar los datos de GitHub de un usuario especifico.      
 - Consultar el Clima de una ciudad o ubicacion especifica    
