@@ -72,7 +72,6 @@ FROM
 JOIN 
     Categories ON Products.CategoryID = Categories.CategoryID;
 
-
 --14. Mostrar el nombre del producto, el precio producto, el código del proveedor y el nombre de la compañía proveedora.
 SELECT 
     Products.ProductName,
@@ -83,7 +82,6 @@ FROM
     Products
 JOIN 
     Suppliers ON Products.SupplierID = Suppliers.SupplierID;
-
 
 -- 15.	Mostrar el número de orden, el código del producto, el precio, la cantidad y el total pagado por producto. ]
 SELECT 
@@ -269,7 +267,7 @@ SELECT c.categoryname, p.productname, p.price, p.stock
 FROM Categories c INNER JOIN products p ON c.categoryid=p.categoryid 
 WHERE p.productname NOT LIKE 'P%'; 
 
---43 Calcular el stock de productos por cada categoria.Mostrar el nombre de la categoria y el stock por categoria.*/
+--43 Calcular el stock de productos por cada categoria.Mostrar el nombre de la categoria y el stock por categoria..*/
 SELECT c.categoryname,sum(p.stock) AS 'stock total' 
 FROM PRODUCTS p 
 INNER JOIN categories c ON p.categoryid=c.categoryid;
@@ -308,7 +306,7 @@ INNER JOIN Suppliers s ON p.supplierid=s.supplierid;
 orden de compra, la fecha de la orden de compra, el código del producto,cantidad pedida del
 producto, nombre del producto y el nombre de la compañía proveedora, usas JOIN.Solamente las
 compañías proveedoras que comienzan con la letra de la A hasta la letra G,además la cantidad
-pedida del producto debe estar entre 23 y 187.*/
+pedida del producto debe estar entre 23 y 187..*/
 SELECT c.company,c.contactname, o.orderdate, d.orderid, d.productid, d.quantity, p.productname, s.suppliername FROM customers c
 INNER JOIN orders o ON c.customerid=o.customerid
 INNER JOIN orderdetails d ON o.orderid=d.orderid
