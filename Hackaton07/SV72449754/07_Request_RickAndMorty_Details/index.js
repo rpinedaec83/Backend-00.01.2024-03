@@ -73,7 +73,7 @@ http.createServer(async function (req, res) {
         //Solictud Axios -Datos de Personajes de Rick & Morty 
         axios.request(options)
             .then((response) => {
-                strHTML+= `<b>Personajes de la serie Rick & Morty: </b><ul>`;
+                strHTML+= `<b>PERSONAJES DE LA SERIE RICK & MORTY: </b><ul>`;
                 console.log("Ingrese a AXIOS");
                 let Personajes =response.data.results;
                 //console.log("Personajes: ",Personajes)
@@ -108,8 +108,9 @@ http.createServer(async function (req, res) {
                       
             })
             .catch((error) => {
-                console.log("Hubo un error en la aplicacion")
-                console.log(error);
+                console.log("Hubo un error en la aplicacion");
+                res.write("Hubo un error al Solicitar los Datos");
+                res.end();
             });
     }
     else {
