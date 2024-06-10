@@ -1,3 +1,30 @@
+/*===================================================
+=====================================================
+    SOLICITUD DE TEMPERATURA DE UNA CIUDAD
+    Ejecutar:
+        Terminal==> npm run dev 
+        
+        Navegador==>http://localhost:8080/clima?ciudad=NombreCiudad
+
+       NombreCiudad -->Inidca el nombre de la ciudad a consultar
+
+
+    Ejemplo:
+        npm run dev
+        http://localhost:8080/clima?ciudad=Huancavelica
+
+        ********* Display en la pagina ***********
+
+            Ciudad de Huancavelica
+
+                Temperatura: 9 °C
+                Fecha y Hora: Sun Jun 09 2024 13:53:40 GMT-0500 (Colombia Standard Time)
+
+        *****************************************   
+
+=====================================================
+=====================================================*/
+
 console.log("Inicio de la aplicacion");
 var http = require('http');
 const axios = require('axios');
@@ -5,7 +32,7 @@ var url = require('url');
 
 http.createServer(async function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    console.log(req.url)
+    console.log("req.url",req.url)
     var q = url.parse(req.url, true).query;
     console.log("q.ciudad",q.ciudad);
     let strUrl = req.url;
@@ -27,7 +54,7 @@ http.createServer(async function (req, res) {
             .then((response) => {
                let strHTML = `<div> <b>Ciudad de ${response.data.name}</b><br></br>
                <label>Temperatura: ${parseInt(parseFloat( response.data.main.temp) - 273.15)} °C </label> <br></br>
-               <label>Amanecer: ${Date(parseInt(response.data.sys.sunrise)*1000)}  </label> 
+               <label>Fecha y Hora: ${Date(parseInt(response.data.sys.sunrise)*1000)}  </label> 
                </div>`;
                 res.write(strHTML);
                 res.end();
@@ -35,8 +62,7 @@ http.createServer(async function (req, res) {
             .catch((error) => {
                 console.log("Hubo un error en la aplicacion")
                 console.log(error);
-                res.write("Error al Leer la Pagina");
-                res.end();
+                res.end("Error al Leer la Pagina");
             });
 
     }
