@@ -1,1 +1,9 @@
-get http://localhost:8080/bebidas
+####get https://quotes.rest/qod?language=en ,-H 'accept: application/json'
+
+
+
+
+
+
+
+GET https://quotes.rest/qod?category=inspire
