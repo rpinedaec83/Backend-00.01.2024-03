@@ -23,7 +23,7 @@ const axios = require('axios');
 var url = require('url');
 
 http.createServer(async function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.writeHead(200, { 'Content-Type': 'application/json' });
     console.log("req.url:"+req.url)
     let strUrl = req.url;
     
@@ -32,6 +32,7 @@ http.createServer(async function (req, res) {
         const options= {
             method: 'GET',
             url:'https://quotes.rest/qod',
+            
             params: {
                 category:'inspire',
             },
@@ -40,43 +41,16 @@ http.createServer(async function (req, res) {
             }
         };
 
-        let strHTML="";
        
-        //Solictud Axios -Citas del Dia
+        //Solictud Axios - Citas del Dia
         axios.request(options)
             .then((response) => {
-                strHTML+= `<b>PERSONAJES DE LA SERIE RICK & MORTY: </b><ul>`;
+               
                 console.log("Ingrese a AXIOS");
-                let Cita =response;
-                console.log("Personajes: ", Cita);
-                /*console.log("Lista de Personajes");
-                Personajes.forEach(element => {
-                    for (const Clave in element) {
-                        if (Clave!="id" && Clave!="episode") {
-                            if (Clave=="name") {
-                                strHTML+= `<p><span>** ${element[Clave].toUpperCase()}</span> </p>`;
-                                console.log(`===>${element[Clave]}`);
-                            }
-                            else if(Clave=="origin" || Clave=="location"){
-                                strHTML+= `<li> ${Clave} : ${element[Clave].name} </li>`;
-                                console.log(`-${Clave} : ${element[Clave].name} `);
-                            }
-
-                            else{
-                                strHTML+= `<li> ${Clave} : ${element[Clave]} </li>`;
-                                console.log(`-${Clave} : ${element[Clave]} `);
-                            }
-                        }   
-                    }
-                    console.log("");
-                    strHTML+= `<br>  </br>`
-                });
-
-                strHTML += "</ul>";
-                console.log("Caracteristica de Personajes HTML : ")
-                console.log(strHTML);
-                res.write(strHTML);*/
-                res.end("Hola Mundo");
+                let Cita =response.data;
+                console.log("Cita del Dia: ", Cita);
+                res.write(JSON.stringify(Cita));
+                res.end();
                       
             })
             .catch((error) => {

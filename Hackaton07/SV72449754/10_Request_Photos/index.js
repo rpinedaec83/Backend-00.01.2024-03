@@ -63,6 +63,7 @@ http.createServer(async function (req, res) {
                // console.log("reponse:",response.data);
                 let Imagen=response.data;
                 res.write(JSON.stringify(Imagen));
+                //res.write(Imagen);
                 res.end();
                       
             })
