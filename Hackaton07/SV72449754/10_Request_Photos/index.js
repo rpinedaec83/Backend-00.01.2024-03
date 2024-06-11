@@ -1,36 +1,15 @@
 /*===================================================
 =====================================================
-        SOLICITUD  LISTADO DE PRODUCTOS DE UNA TIENDA
+        SOLICITUD  DE UNA FOTOGRAFIA
     Ejecutar:
         Terminal: npm run dev 
-        Navegador: http://localhost:8080/lista
+        Navegador: http://localhost:8080/foto
 
     Ejemplo:
         
         ********* Display en la pagina ***********
 
-            LISTADO DE PRODUCTOS DE UNA TIENDA:
-                Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
-                Mens Casual Premium Slim Fit T-Shirts
-                Mens Cotton Jacket
-                Mens Casual Slim Fit
-                John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet
-                Solid Gold Petite Micropave
-                White Gold Plated Princess
-                Pierced Owl Rose Gold Plated Stainless Steel Double
-                WD 2TB Elements Portable External Hard Drive - USB 3.0
-                SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s
-                Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5
-                WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive
-                Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin
-                Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED
-                BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats
-                Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket
-                Rain Jacket Women Windbreaker Striped Climbing Raincoats
-                MBJ Women's Solid Short Sleeve Boat Neck V
-                Opna Women's Short Sleeve Moisture
-                DANVOUY Womens T Shirt Casual Cotton Short
-
+            
         *****************************************   
 
 =====================================================
@@ -40,39 +19,50 @@
 console.log("Inicio de la aplicacion");
 var http = require('http');
 const axios = require('axios');
+const fs=require('fs');
 var url = require('url');
 
 http.createServer(async function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+   //res.writeHead(200, { 'Content-Type': 'image/jpeg'});
+    res.writeHead(200, { 'Content-Type': 'application/json' });
     console.log("req.url:"+req.url)
     let strUrl = req.url;
     
-    if (strUrl.includes("/lista")) {
+    if (strUrl.includes("/foto")) {
 
         const options= {
             method: 'GET',
-            url:`https://fakestoreapi.com/products`,
+            //url:'https://images.unsplash.com/photo-1461988320302-91bde64fc8e4?ixid=2yJhcHBfaWQiOjEyMDd9&fm=jpg&fit=crop&w=1080&q=80&fit=max',
+            url: 'https://images.unsplash.com/photo-1461988320302-91bde64fc8e4?ixid=2yJhcHBfaWQiOjEyMDd9',
+       
+            params: {
+                fm:'jpg',
+                fit:'crop',
+                w:1080,
+                q:80,
+                fit:'max'
+            
+            },
         };
 
-        let strHTML="";
+        /*fs.readFile('./descarga.jpg',(err,data)=>{
+            if(err){
+                res.end('Falla');
+            }else {
+                
+               // res.setHeader('Content-Type', 'image/jpeg');
+                res.end(data);
+            }
+        })*/
+        
        
-        //Solictud Axios - Lista de Productos de una Tienda
+        //Solictud Axios - Imagen
         axios.request(options)
             .then((response) => {
-                strHTML+= `<b>LISTADO DE PRODUCTOS DE UNA TIENDA: </b><ol>`;
-                console.log("Ingrese a AXIOS");
-                let ListProducts =response.data;
-                //console.log("Lista: ",ListProducts)
-                console.log("Lista de Productos de una Tienda");
-                ListProducts.forEach(element => {
-                    console.log("-"+element.title)
-                    strHTML+= "<li>" + element.title + "</li>"
-                });
-
-                strHTML += "</ol>";
-                console.log("Lista de Productos de una Tienda HTML : ")
-                console.log(strHTML);
-                res.write(strHTML);
+                
+               // console.log("reponse:",response.data);
+                let Imagen=response.data;
+                res.write(JSON.stringify(Imagen));
                 res.end();
                       
             })
