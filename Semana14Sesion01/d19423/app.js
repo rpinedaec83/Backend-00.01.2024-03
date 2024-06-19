@@ -63,7 +63,45 @@ wsServer.on("request", (request) => {
     connection.on("message",  (message) => {
         console.log(message.utf8Data)
         switch (message.utf8Data) {
-
+            case "reporte":
+                let objReporte = {
+                    nombre: "Roberto",
+                    apellido: "Pineda"
+                }
+                connection.sendUTF(JSON.stringify(objReporte));
+                break;
+            case "llamada":
+                console.log("Regresar llamada");
+                connection.sendUTF("Recibido: Te voy a devolver la llamada");
+                break;
+                case "clima":
+                    const options = {
+                        method: 'GET',
+                        hostname: 'the-weather-api.p.rapidapi.com',
+                        port: null,
+                        path: '/api/weather/lima',
+                        headers: {
+                            'X-RapidAPI-Key': '73d70d2c28msh7f79106bce6c25ep19a96ajsn943644966186',
+                            'X-RapidAPI-Host': 'the-weather-api.p.rapidapi.com'
+                        }
+                    };
+                    
+                    const req = http.request(options, function (res) {
+                        const chunks = [];
+                    
+                        //cada que ejecuta el evento data osea si recibe datos  
+                        res.on('data', function (chunk) {
+                            chunks.push(chunk);
+                        });
+                    
+                        res.on('end', function () {
+                            const body = Buffer.concat(chunks);
+                            connection.sendUTF(body.toString());
+                        });
+                    });
+        
+                    req.end();
+                    break;
             default :
 
                 console.log("Mensaje recibido: " + message.utf8Data);
