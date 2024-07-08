@@ -1,23 +1,30 @@
-const db = require("../models");
-const Tutorial = db.tutorials;
-const Tag = db.tag;
+/*const db = require("../models");
+const T_propietario = db.tlb_propietario;
+const T_mascota = db.tlb_mascota;
+const T_especie = db.tlb_especie;
+const T_raza = db.tlb_raza;
+const T_color = db.tlb_color;
+const T_vacuna = db.tlb_vacuna;
+//const Tag = db.tag;
 
 exports.create = (req, res) => {
 
-    const tag = {
-        name: req.body.name
+    const bt_propietario = {
+        Nombre: req.body.Nombre,
+        Apellido: req.body.Apellido,
+        Documento: req.body.Documento,
+        Telefono: req.body.Telefono
     }
 
-    Tag.create(tag)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Tutorial."
-            });
+    T_propietario.create(bt_propietario).then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while creating the Tutorial."
         });
+    });
 };
 
 exports.findAll = (req, res) => {
@@ -76,3 +83,4 @@ exports.addTutorial = (req, res) => {
             });
         });
 };
+*/

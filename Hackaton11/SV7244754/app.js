@@ -23,10 +23,10 @@ db.sequelize.sync()
 
 
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to pachaqtec application." });
+    res.json({ message: "Bienvenidos a la Veterinaria DB" });
 });
 
-require("./app/routes/tutorial.routes")(app);
+require("./app/routes/Especies.routes.js")(app);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

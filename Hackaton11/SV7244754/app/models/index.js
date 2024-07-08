@@ -1,71 +1,57 @@
 const dbConfig = require("../config/db.config.js");
 const Sequelize = require("sequelize");
-//const MsSqlDialect = require("sequelize/mssql");
 
-/*import { Sequelize } from '@sequelize/core';
-import { MsSqlDialect } from '@sequelize/mssql';*/
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+    host: dbConfig.HOST,
+    dialect: dbConfig.dialect,
+    operatorsAliases: false,
 
-// const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-//     host: dbConfig.HOST,
-//     dialect: dbConfig.dialect,
-//     operatorsAliases: false,
-
-//     pool: {
-//         max: dbConfig.pool.max,
-//         min: dbConfig.pool.min,
-//         acquire: dbConfig.pool.acquire,
-//         idle: dbConfig.pool.idle
-//     }
-// });
-
-const sequelize = new Sequelize('tutorialdb', 'sa', 'Autotest123', {
-    host: 'localhost',
-    dialect: 'mssql', 
-    //port: 1433,
-  });
+    pool: {
+        max: dbConfig.pool.max,
+        min: dbConfig.pool.min,
+        acquire: dbConfig.pool.acquire,
+        idle: dbConfig.pool.idle
+    }
+});
 
  
-  /*const sequelize = new Sequelize({
-    dialect: "mssql",
-    server: 'localhost',
-    port: 1433,
-    database: 'tutorialdb',
-    authentication: {
-      type: 'default',
-      options: {
-        userName: 'sa',
-        password: 'Autotest123',
-      },
-    },
-  });*/
-
-  
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
-db.comments = require("./comment.model.js")(sequelize, Sequelize);
-db.tag = require("./tag.model.js")(sequelize, Sequelize);
+db.tlb_propietario = require("./propietario.model.js")(sequelize, Sequelize);
+db.tlb_mascota = require("./mascota.model.js")(sequelize, Sequelize);
+db.tlb_especie = require("./especie.model.js")(sequelize, Sequelize);
+db.tlb_raza = require("./raza.model.js")(sequelize, Sequelize);
+db.tlb_color = require("./color.model.js")(sequelize, Sequelize);
+db.tlb_vacuna = require("./vacuna.model.js")(sequelize, Sequelize);
 
-db.tutorials.hasMany(db.comments, { as: "comments" });
-db.comments.belongsTo(db.tutorials, {
-    foreignKey: "tutorialId",
-    as: "tutorial",
+
+db.tlb_propietario.hasMany(db.tlb_mascota, { as: "mascota_x1" });
+db.tlb_mascota.belongsTo(db.tlb_propietario);
+
+db.tlb_especie.hasMany(db.tlb_mascota, { as: "mascota_x2" });
+db.tlb_mascota.belongsTo(db.tlb_especie);
+
+db.tlb_raza.hasMany(db.tlb_mascota, { as: "mascota_x3" });
+db.tlb_mascota.belongsTo(db.tlb_raza);
+
+db.tlb_color.hasMany(db.tlb_mascota, { as: "mascota_x4" });
+db.tlb_mascota.belongsTo(db.tlb_color);
+
+
+db.tlb_mascota.belongsToMany(db.tlb_vacuna, {
+    through: "tlb_mascota_vacuna",
+    as: "mascota",
+    foreignKey: "tlbMascotaId",
 });
 
-
-db.tag.belongsToMany(db.tutorials, {
-    through: "tutorial_tag",
-    as: "tutorials",
-    foreignKey: "tag_id",
+db.tlb_vacuna.belongsToMany(db.tlb_mascota, {
+    through: "tlb_mascota_vacuna",
+    as: "vacuna",
+    foreignKey: "tlbVacunaId",
 });
 
-db.tutorials.belongsToMany(db.tag, {
-    through: "tutorial_tag",
-    as: "tags",
-    foreignKey: "tutorial_id",
-});
 
 module.exports = db;
 

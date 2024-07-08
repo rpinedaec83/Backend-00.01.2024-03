@@ -1,23 +1,21 @@
 const db = require("../models");
-const Tutorial = db.tutorials;
-const Comment = db.comments;
+const cEspecie = db.tlb_especie;
+//const Comment = db.comments;
 
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.Descripcion) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
-    const tutorial = {
-        title: req.body.title,
-        description: req.body.description,
-        published: req.body.published ? req.body.published : false
+    const objEspecie = {
+        Descripcion: req.body.Descripcion,
     };
-    Tutorial.create(tutorial).then(data => {
+    cEspecie.create(objEspecie).then(data => {
             res.send(data);
         })
         .catch(err => {
@@ -28,7 +26,7 @@ exports.create = (req, res) => {
         });
 };
 
-exports.findAll = (req, res) => {
+/*exports.findAll = (req, res) => {
     const title = req.query.title;
     console.log(title)
     var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
@@ -164,4 +162,4 @@ exports.createComment = (req, res)=>{
         });
       });
   };
-
+*/

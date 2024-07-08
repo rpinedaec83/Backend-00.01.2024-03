@@ -1,11 +1,11 @@
 
 module.exports = app => {
-    const tutorials = require("../controllers/tutorial.controller.js");
-    const tags = require("../controllers/tag.controller.js");
+    const rEspecies = require("../controllers/Especie.controller.js");
+   // const tags = require("../controllers/tag.controller.js");
     var router = require("express").Router();
 
-    router.post("/", tutorials.create);
-    router.get("/", tutorials.findAll);
+    router.post("/", rEspecies.create);
+    /*router.get("/", tutorials.findAll);
     router.get("/:id", tutorials.findOne);
     router.put("/:id",tutorials.update);
     router.delete("/:id", tutorials.delete);
@@ -16,8 +16,8 @@ module.exports = app => {
 
     router.post("/tag", tags.create);
     router.get("/tag/:id", tags.findAll);
-    router.post("/tag/tutorial", tags.addTutorial)
+    router.post("/tag/tutorial", tags.addTutorial)*/
 
 
-    app.use('/api/tutorials', router);
+    app.use('/api/veterinaria/especies', router);
 }
