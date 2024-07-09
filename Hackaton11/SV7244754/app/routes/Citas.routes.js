@@ -1,12 +1,11 @@
 
-/*module.exports = app => {
-    const tutorials = require("../controllers/tutorial.controller.js");
-    const tags = require("../controllers/tag.controller.js");
+module.exports = app => {
+    const rCitas = require("../controllers/Citas.controller.js");
     var router = require("express").Router();
 
-    router.post("/", tutorials.create);
-    router.get("/", tutorials.findAll);
-    router.get("/:id", tutorials.findOne);
+    router.post("/", rCitas.create);
+    //router.get("/", rCitas.findAll);
+    /*router.get("/:id", tutorials.findOne);
     router.put("/:id",tutorials.update);
     router.delete("/:id", tutorials.delete);
     router.delete("/", tutorials.deleteAll);
@@ -16,8 +15,8 @@
 
     router.post("/tag", tags.create);
     router.get("/tag/:id", tags.findAll);
-    router.post("/tag/tutorial", tags.addTutorial)
+    router.post("/tag/tutorial", tags.addTutorial)*/
 
 
-    app.use('/api/veterinaria', router);
-}*/
+    app.use('/api/veterinaria/citas', router);
+}

@@ -27,6 +27,10 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/Especies.routes.js")(app);
+require("./app/routes/Colores.routes.js")(app);
+require("./app/routes/Razas.routes.js")(app);
+require("./app/routes/Vacunas.routes.js")(app);
+require("./app/routes/Citas.routes.js")(app);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

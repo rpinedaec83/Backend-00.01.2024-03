@@ -1,7 +1,5 @@
 const db = require("../models");
-const cEspecie = db.tlb_especie;
-//const Comment = db.comments;
-
+const cRaza = db.tlb_raza;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -12,10 +10,10 @@ exports.create = (req, res) => {
         });
         return;
     }
-    const objEspecie = {
+    const objRaza = {
         Descripcion: req.body.Descripcion,
     };
-    cEspecie.create(objEspecie).then(data => {
+    cRaza.create(objRaza).then(data => {
             res.send(data);
         })
         .catch(err => {
@@ -26,14 +24,9 @@ exports.create = (req, res) => {
         });
 };
 
-/*exports.findAll = (req, res) => {
-    const title = req.query.title;
-    console.log(title)
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-    console.log(condition);
-    Tutorial.findAll({
-        include: ["comments", "tags"],
-    }, { where: condition })
+exports.findAll = (req, res) => {
+    
+    cRaza.findAll()
         .then(data => {
             res.send(data);
         })
@@ -48,7 +41,7 @@ exports.create = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Tutorial.findByPk(id)
+    cRaza.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
@@ -68,7 +61,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Tutorial.update(req.body, {
+    cRaza.update(req.body, {
         where: { id: id }
     })
         .then(num => {
@@ -92,7 +85,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Tutorial.destroy({
+    cRaza.destroy({
         where: { id: id }
     })
         .then(num => {
@@ -114,7 +107,7 @@ exports.delete = (req, res) => {
 };
 
 exports.deleteAll = (req, res) => {
-    Tutorial.destroy({
+    cRaza.destroy({
       where: {},
       truncate: false
     })
@@ -128,38 +121,5 @@ exports.deleteAll = (req, res) => {
         });
       });
 };
-exports.findAllPublished = (req, res) => {
-    Tutorial.findAll({ where: { published: true } })
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving tutorials."
-        });
-      });
-};
 
-exports.createComment = (req, res)=>{
-    const tutorialId = req.params.id;
-    const comment = {
-        name: req.body.name,
-        text: req.body.text
-      };
-    Comment.create({
-      name: comment.name,
-      text: comment.text,
-      tutorialId: tutorialId,
-    })
-    .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Tutorial."
-        });
-      });
-  };
-*/
+

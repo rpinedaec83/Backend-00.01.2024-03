@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         Documento: {
             type: DataTypes.STRING,
+            unique: true,
         },
         Telefono: {
             type: DataTypes.STRING,
