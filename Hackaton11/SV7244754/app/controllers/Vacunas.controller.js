@@ -1,5 +1,6 @@
 const db = require("../models");
 const cVacuna = db.tlb_vacuna;
+const cMascota = db.tlb_mascota;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -120,6 +121,46 @@ exports.deleteAll = (req, res) => {
             err.message || "Some error occurred while removing all tutorials."
         });
       });
+};
+
+
+
+exports.AddVacunaMascota = (req, res) => {
+    
+    const MascotaId = req.body.MascotaId;
+    const VacunalId = req.body.VacunaId;
+
+    cMascota.findByPk(MascotaId)
+        .then((MascotaId_Clbk) => {
+            //console.log("MascotaId_Clbk: ",MascotaId_Clbk);
+            if (!MascotaId_Clbk) {
+                res.status(400).send({
+
+                    message:
+                        "No se encontro la Mascota"
+                });
+            }
+            cVacuna.findByPk(VacunalId)
+                .then((VacunalId_Clbk) => {
+                    //console.log("VacunalId_Clbk-1: ",VacunalId_Clbk);
+                    if (!VacunalId_Clbk) {
+                        console.log("Vacuna no encontrada");
+                        return null;
+                    }
+
+                    MascotaId_Clbk.addVacuna(VacunalId_Clbk);
+                    //VacunalId_Clbk.addcMascota(MascotaId_Clbk);
+                    //console.log("VacunalId_Clbk-2: ",VacunalId_Clbk);
+                    res.send(MascotaId_Clbk);
+                });
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while creating the Tutorial."
+            });
+        });
 };
 
 

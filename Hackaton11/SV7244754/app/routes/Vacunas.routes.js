@@ -10,5 +10,7 @@ module.exports = app => {
     router.delete("/:id", rVacunas.delete);
     router.delete("/", rVacunas.deleteAll);
 
+    router.post("/mascota", rVacunas.AddVacunaMascota);
+
     app.use('/api/veterinaria/vacunas', router);
 }

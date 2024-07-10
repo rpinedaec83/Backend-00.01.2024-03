@@ -27,38 +27,50 @@ db.tlb_color = require("./color.model.js")(sequelize, Sequelize);
 db.tlb_vacuna = require("./vacuna.model.js")(sequelize, Sequelize);
 db.tlb_cita = require("./cita.model.js")(sequelize, Sequelize);
 
+db.tlb_propietario.hasMany(db.tlb_cita, { as: "Cita" });
+db.tlb_cita.belongsTo(db.tlb_propietario,{
+    foreignKey: "tlbPropietarioId",
+    as: "Propietario",
+});
 
-/*db.tutorials.hasMany(db.comments, { as: "comments" });
-db.comments.belongsTo(db.tutorials, {
-    foreignKey: "tutorialId",
-    as: "tutorial",
-});*/
+db.tlb_mascota.hasMany(db.tlb_cita, { as: "Cita" });
+db.tlb_cita.belongsTo(db.tlb_mascota,{ 
+    foreignKey: "tlbMascotumId",
+    as: "Mascota",
+});
 
-db.tlb_propietario.hasMany(db.tlb_cita, { as: "cita_x1" });
-db.tlb_cita.belongsTo(db.tlb_propietario);
 
-db.tlb_propietario.hasMany(db.tlb_mascota, { as: "mascota_x1" });
-db.tlb_mascota.belongsTo(db.tlb_propietario);
+db.tlb_especie.hasMany(db.tlb_mascota, { as: "Mascota" });
+db.tlb_mascota.belongsTo(db.tlb_especie,{
+    foreignKey: "tlbEspecieId",
+    as: "Especie",
+});
 
-db.tlb_especie.hasMany(db.tlb_mascota, { as: "mascota_x2" });
-db.tlb_mascota.belongsTo(db.tlb_especie);
 
-db.tlb_raza.hasMany(db.tlb_mascota, { as: "mascota_x3" });
-db.tlb_mascota.belongsTo(db.tlb_raza);
+db.tlb_raza.hasMany(db.tlb_mascota, { as: "Mascota" });
+db.tlb_mascota.belongsTo(db.tlb_raza,{
+    foreignKey: "tlbRazaId",
+    as: "Raza",
+});
 
-db.tlb_color.hasMany(db.tlb_mascota, { as: "mascota_x4" });
-db.tlb_mascota.belongsTo(db.tlb_color);
+
+db.tlb_color.hasMany(db.tlb_mascota, { as: "Mascota" });
+db.tlb_mascota.belongsTo(db.tlb_color, {
+    foreignKey: "tlbColorId",
+    as: "Color",
+});
+
 
 
 db.tlb_mascota.belongsToMany(db.tlb_vacuna, {
     through: "tlb_mascota_vacuna",
-    as: "mascota",
+    as: "Vacunas",
     foreignKey: "tlbMascotaId",
 });
 
 db.tlb_vacuna.belongsToMany(db.tlb_mascota, {
     through: "tlb_mascota_vacuna",
-    as: "vacuna",
+    as: "Mascota",
     foreignKey: "tlbVacunaId",
 });
 
