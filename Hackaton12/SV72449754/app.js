@@ -7,13 +7,13 @@ http.createServer(function (req, res) {
   const reqUrl = url.parse(req.url, true);
   console.log("reqUrl: ",reqUrl.pathname);
  
-   if (reqUrl.pathname === '/nuevo' && req.method === 'POST') {
+  if (reqUrl.pathname === '/nuevo' && req.method === 'POST') {
 
     let body = '';
 
     req.on('data', (chunk) => {
       console.log("capturando el chunk");
-        body += chunk;
+      body += chunk;
        
     });
 
@@ -31,9 +31,15 @@ http.createServer(function (req, res) {
        
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Registro creado' }));
-    
-    
   }
+
+  else if (reqUrl.pathname === '/pendiente' && req.method === 'GET') {
+    const completados = RegistroCompras.filter(elem => elem.estado);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(completados));    
+  }
+
+
   else {
     res.write(JSON.stringify({ data: "cualquiercosa" }));
     res.end();

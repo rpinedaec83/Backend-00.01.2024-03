@@ -19,27 +19,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
           console.log("enviando datos al servidor-0");
-            const response = await fetch("http://localhost:8080/nuevo" ,{
+          const response = await fetch("http://localhost:8080/nuevo" ,{
               method: "POST",
               mode:"no-cors",
               headers: {"Content-Type": "application/json",},
-              body: JSON.stringify(RegCompraNueva),
-              
-            });
-            console.log("enviando datos al servidor-1",response.ok);
-            //if (response.ok) {
-            try {
-              console.log("envio exitoso");
-              const data =  await response.json();
-              console.log("Recibido del Server: ",data);
-            } catch (error) {
-              console.log("error: ",error)
-            }
-              
-            //}
-            console.log("enviando datos al servidor-2");
+              body: JSON.stringify(RegCompraNueva),   
+          });
+
+          console.log("enviando datos al servidor-1",response.ok);
+          try {
+            console.log("envio exitoso");
+            const data =  await response.json();
+            console.log("Recibido del Server: ",data);
+          } catch (error) {
+            console.log("error: ",error)
+          }
+          console.log("enviando datos al servidor-2");
             
-           
           } catch (error) {}
 
        /* fetch("http://localhost:8080/nuevo" ,{
@@ -51,4 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((json) => console.log(json.value));*/
        
     });
+
+    Registropendientes.addEventListener("click",async (e)=>{
+      e.preventDefault();
+      await fetch("http://localhost:8080/pendiente");  
+    }
+    );
+
+
+
+
   });
